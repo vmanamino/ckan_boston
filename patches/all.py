@@ -1,7 +1,7 @@
 """This is a script to patch all datasets on Boston Open Data Hub
 Simply add or assign to the variable for the parameter to send
 which corresponds to the appropriate metadata field.
-See the Boston metadata scheme mapping to the CKAN_API_KEY
+See the Boston metadata scheme mapping to the CKAN
 API parameters included in this repository
 """
 
