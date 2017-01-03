@@ -1,4 +1,5 @@
 approved-building-permits
 article80-projects-as-of-july-2016
 big-belly-alerts-2014
-big-belly-alerts-tableau
+checkbook-explorer
+boston-open-budget-project-phase-descriptions

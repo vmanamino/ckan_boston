@@ -1,0 +1,6 @@
+dataset id	response code	contact point	contact point email	provider
+approved-building-permits	200	innovation	opengov@cityofboston.gov	innovation
+article80-projects-as-of-july-2016	200	innovation	EGIS_Team@boston.gov	innovation
+big-belly-alerts-2014	200	innovation	opengov@cityofboston.gov	innovation
+checkbook-explorer	200	no key	no key	no key
+boston-open-budget-project-phase-descriptions	200	innovation	opengov@cityofboston.gov	innovation

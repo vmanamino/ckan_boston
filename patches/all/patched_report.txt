@@ -1,0 +1,6 @@
+dataset id	response code	contact point	contact point email	provider
+approved-building-permits	NA
+article80-projects-as-of-july-2016	NA
+big-belly-alerts-2014	NA
+checkbook-explorer	200
+boston-open-budget-project-phase-descriptions	NA

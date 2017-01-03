@@ -50,17 +50,17 @@ parameter in resource to be updated, i.e. patch
 """
 language = 'en'
 
-with open('report_resources.txt', 'w') as report:
+with open('report_resources_test.txt', 'w') as report:
     report.write('dataset id\tnumber of resources\tcode\n')
-    with open('ids.txt') as ids:
-        with open('report_resources_updated', 'w') as reported_updates:
+    with open('test.txt') as ids:
+        with open('report_resources_updated_test.txt', 'w') as reported_updates:
             reported_updates.write('dataset id\tresources updated\n')
             #split each line at newline, effectively removing newline
             lines = ids.read().splitlines()
             # print(lines)
             # only if the count of lines from the text file is the same as the 
             # count of titles returned from the request above, proceed with patch
-            if len(lines) == count:
+            if len(lines) == 2:
                 for line in lines:
                     print(line)
                     code = 0
