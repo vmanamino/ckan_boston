@@ -108,23 +108,3 @@ with open('report_resources.txt', 'w') as report:
                     else:
                         reported_updates.write("%s\t0\n" % (line))
                         print(line + " has no resources key")
-# # prep request
-# request = urllib2.Request(
-#                     'http://boston.ogopendata.com/api/3/action/package_show')
-                    
-# payload = {'id': 'building-energy-and-water-use-metrics' }
-# data_string = urllib.quote(json.dumps(payload))
-
-# response = urllib2.urlopen(request, data_string)
-
-# package_data = json.loads(response.read())
-
-# dataset = package_data['result']
-
-# number = len(dataset['resources'])
-
-# resources = dataset['resources']
-
-# for resource in resources:
-#     resource_to_update = resource['id']
-#     print(resource_to_update)
