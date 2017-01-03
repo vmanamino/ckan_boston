@@ -45,26 +45,22 @@ with open('ids.txt', 'w') as outfile:
 # test count of ids against count of titles
 assert counter == count # currently 135, 5 of these are blocked from public view
 
-# # prep request
-# request = urllib2.Request(
-#     'http://boston.ogopendata.com/api/3/action/package_patch')
-
-# # add Authorization header
-# request.add_header('Authorization', key)
-
 """
-parameters 
+parameter 
 to be updated, i.e. patching the dataset
 """
 
 # Boston Open Data Hub license for ALL datasets
 cob_license_id = 'odc-pddl'
 
+# Boston Open Data Hub language parameter, supply appropriate language code
+
+
 # # check that request for missing dataset id, fails
 # missing_dataset_id = 'this-dataset-not-there'
 
 # write report with title/id and http code
-with open('report.txt', 'w') as report:
+with open('report_datasets_updated.txt', 'w') as report:
     report.write('dataset id\thttp response\n')
     # read ids from ids.txt, but test with ids.1.txt first
     with open('ids.txt') as ids:
@@ -90,6 +86,5 @@ with open('report.txt', 'w') as report:
                     response = urllib2.urlopen(request, data_string)
                     report.write("%s\t%s\n" % (line, response.code))
                 except urllib2.HTTPError as err:
-                    if err.code == 404:
-                        report.write("%s\t%s\n" % (line, err.code))
+                    report.write("%s\t%s\n" % (line, err.code))
             
