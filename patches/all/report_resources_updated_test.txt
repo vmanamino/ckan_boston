@@ -1,3 +1,2 @@
 dataset id	resources updated
-checkbook-explorer	1
-boston-open-budget-project-phase-descriptions	1
+cityscore-full-metric-list	1

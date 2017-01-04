@@ -50,9 +50,9 @@ with open('report_mandatory_fields.txt', 'w') as first_report:
     first_report.write('dataset id\tresponse code\tcontact point\tcontact point email\tprovider\n')
     with open('patched_report.txt', 'w') as patch_report:
         patch_report.write('dataset id\tresponse code\tcontact point\tcontact point email\tprovider\n')
-        with open('ids.2.txt') as ids:
+        with open('ids.txt') as ids:
             lines = ids.read().splitlines()
-            if len(lines) == 5:
+            if len(lines) == count:
                 for line in lines:
                     payload = {'id': line}
                     data_string = urllib.quote(json.dumps(payload))
@@ -136,7 +136,7 @@ with open('report_mandatory_fields.txt', 'w') as first_report:
                                 print('payload sent')
                                 print(payload)
                             except urllib2.HTTPError as err:
-                                # patch_report.write('%s\t%s\n' % (id, err.code))
+                                patch_report.write('%s\t%s\n' % (id, err.code))
                                 print(err.code)
                                 print('payload not sent')
                                 print(payload)

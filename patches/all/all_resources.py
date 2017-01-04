@@ -60,7 +60,7 @@ with open('report_resources_test.txt', 'w') as report:
             # print(lines)
             # only if the count of lines from the text file is the same as the 
             # count of titles returned from the request above, proceed with patch
-            if len(lines) == 2:
+            if len(lines) == 1:
                 for line in lines:
                     print(line)
                     code = 0
