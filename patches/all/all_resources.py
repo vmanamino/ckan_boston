@@ -3,7 +3,9 @@ This is a script to update all resources of all datasets.
 Simply add or assign to the variable for the parameter to send
 which corresponds to the appropriate metadata field.
 See the Boston metadata scheme mapping to the CKAN
-API parameters included in this repository
+API parameters included in this repository.
+I will revise all this, isolate tasks, and create a library
+for CKAN metadata editing via the API
 """
 import json, os
 import urllib2

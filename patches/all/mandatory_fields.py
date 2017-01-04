@@ -1,7 +1,9 @@
 """
 This is a script to update conditionally
-all datasets missing required metadata.all
+all datasets missing required metadata.
 See the document mandataory_fields.
+I will revise all this, isolate tasks, and create a library
+for CKAN metadata editing via the API
 """
 import json, os
 import urllib2
@@ -107,6 +109,7 @@ with open('report_mandatory_fields.txt', 'w') as first_report:
                         first_report.write('\n')    
                         if contact_empty or contact_email_empty or provider_empty:
                             # this is most likely the only case if a patch is to be made at all
+                            # all this needs to be called from a library
                             if contact_empty and contact_email_empty and provider_empty:
                                 payload = {'id': id, 'contact_point': contact_point, 
                                             'contact_point_email': contact_point_email, 'provider': provider}
