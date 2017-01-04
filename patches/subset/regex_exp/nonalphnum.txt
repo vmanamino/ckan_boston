@@ -1,0 +1,14 @@
+311,ServiceRequests
+BTD-SignShopCompletedWorkorders
+CityofBostonUtilityData(2011-2015)
+CodeEnforcement-BuildingandPropertyViolations
+CORIVendorReport-UpdatedasofMay2016
+CrimeIncidentReports(July2012-August2015)
+DepartmentofNeighborhoodDevelopment-PropertyInventory
+Mayors24HourHotline(Casescreatedlast90days)
+StreetLightControlBox,ElectricPowerCost&UsageDetails
+StreetLightRetrofits(2014)
+Tweetssentfrom@NotifyBostonfromMarch2014-March2015
+WickedFreeWi-FiDailyConnections
+BostonOpenBudget-CapitalBudget
+BostonOpenBudget-CapitalProjectList
