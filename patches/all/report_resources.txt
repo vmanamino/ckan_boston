@@ -18,7 +18,7 @@ boston-police-department-fio	1	200
 boston-police-department-firearms-recovery-counts	1	200
 boston-public-library-daily-active-user-counts	1	200
 boston-segments	6	200
-boston-zip-codes	0	200
+boston-zip-codes	null	500
 boundary	6	200
 boundary-50ft-buffer	6	200
 btd-sign-shop-completed-workorders	1	200
