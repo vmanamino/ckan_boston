@@ -1,0 +1,17 @@
+these are the titles to formatted into ids by separating words with a single dash.
+Copy and paste into a separate text file called cleaned_and_formatted.txt and format.  Then add to dataset_ids.txt file
+
+311-service-requests
+btd--sign-shop-completed-workorders
+city-of-boston-utility-data-20112015
+code-enforcement--building-and-property-violations
+cori-vendor-report--updated-as-of-may-2016
+crime-incident-reports-july-2012--august-2015
+department-of-neighborhood-development--property-inventory
+mayors-24-hour-hotline-cases-created-last-90-days
+street-light-control-box-electric-power-cost--usage-details
+street-light-retrofits2014
+tweets-sent-from-notifyboston-from-march-2014--march-2015
+wicked-free-wifi-daily-connections
+boston-open-budget--capital-budget
+boston-open-budget--capital-project-list

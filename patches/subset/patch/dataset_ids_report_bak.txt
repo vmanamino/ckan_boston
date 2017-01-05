@@ -1,0 +1,49 @@
+formatted id	response	correct id
+911-daily-dispatch-count-by-agency	200
+all-section-12-alcohol-licenses	200
+approved-building-permits	200
+big-belly-alerts-2014	200
+big-belly-locations	200
+boston-jobs-policy-compliance-reports	200
+boston-neighborhood-shapefiles	200
+boston-police-department-fio	200
+boston-police-department-firearms-recovery-counts	200
+boston-public-library-daily-active-user-counts	200
+building-energy-and-water-use-metrics	200
+city-of-boston-owned-property	200
+dnd-managed-city-property-developable	200
+dnd-managed-city-property-inventory-all	200
+economic-indicators	200
+entertainment-licenses	200
+food-establishment-inspections	200
+hospital-locations	200
+liquor-licenses	200
+main-street-districts	200
+master-address-list	200
+municipal-energy-data	200
+park-boston-monthly-transactions-by-zone-2015	200
+parking-tickets-portal-web-statistics	200
+public-works-active-work-zones	200
+street-sweeping-schedules	200
+streetlight-locations	200
+trash-schedules-by-address	200
+vehicle-excise-tax-2014	200
+fy17-cob-gen-fund-budget	200
+fy16-cob-gen-fund-budget	200
+capital-project-phase-description	404 boston-open-budget-project-phase-descriptions
+fy17-adopted-budget-data	200
+checkbook-explorer	200
+311-service-requests	200
+btd-sign-shop-completed-workorders	200
+city-of-boston-utility-data-2011-2015	200
+code-enforcement-building-and-property-violations	200
+cori-vendor-report-updated-as-of-may-2016	200
+crime-incident-reports-july-2012-august-2015	404 crime-incident-reports-july-2012-august-2015-source-legacy-system
+department-of-neighborhood-development-property-inventory	200
+mayors-24-hour-hotline-cases-created-last-90-days	404 mayors-24-hour-hotline
+street-light-control-box-electric-power-cost-usage-details	200
+street-light-retrofits2014	404 street-light-retrofits-2014
+tweets-sent-from-notifyboston-from-march-2014-march-2015	200
+wicked-free-wifi-daily-connections	404 wicked-free-wi-fi-daily-connections
+boston-open-budget-capital-budget	200
+boston-open-budget-capital-project-list	200

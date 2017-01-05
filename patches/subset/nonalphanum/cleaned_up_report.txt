@@ -1,0 +1,54 @@
+character , in title 311, service requests
+1
+
+character - in title btd - sign shop completed workorders
+2
+
+character - in title city of boston utility data (2011-2015)
+character ( in title city of boston utility data (20112015)
+character ) in title city of boston utility data 20112015)
+3
+
+character - in title code enforcement - building and property violations
+4
+
+character - in title cori vendor report - updated as of may 2016
+5
+
+character - in title crime incident reports (july 2012 - august 2015)
+character ( in title crime incident reports (july 2012  august 2015)
+character ) in title crime incident reports july 2012  august 2015)
+6
+
+character - in title department of neighborhood development - property inventory
+7
+
+character ( in title mayors 24 hour hotline (cases created last 90 days)
+character ) in title mayors 24 hour hotline cases created last 90 days)
+8
+
+character , in title street light control box, electric power cost & usage details
+character & in title street light control box electric power cost & usage details
+9
+
+character ( in title street light retrofits(2014)
+character ) in title street light retrofits2014)
+10
+
+character - in title tweets sent from @notifyboston from march 2014 - march 2015
+character @ in title tweets sent from @notifyboston from march 2014  march 2015
+11
+
+character - in title wicked free wi-fi daily connections
+12
+
+character - in title boston open budget - capital budget
+13
+
+character - in title boston open budget - capital project list
+14
+
+
+
+total cleaned:
+14

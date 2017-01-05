@@ -1,14 +1,14 @@
-311, Service Requests
-BTD - Sign Shop Completed Workorders
-City of Boston Utility Data (2011-2015)
-Code Enforcement - Building and Property Violations
-CORI Vendor Report - Updated as of May 2016
-Crime Incident Reports (July 2012 - August 2015)
-Department of Neighborhood Development - Property Inventory
-Mayors 24 Hour Hotline (Cases created last 90 days)
-Street Light Control Box, Electric Power Cost & Usage Details
-Street Light Retrofits(2014)
-Tweets sent from @NotifyBoston from March 2014 - March 2015
-Wicked Free Wi-Fi Daily Connections
-Boston Open Budget - Capital Budget
-Boston Open Budget - Capital Project List
+311, service requests
+btd - sign shop completed workorders
+city of boston utility data (2011-2015)
+code enforcement - building and property violations
+cori vendor report - updated as of may 2016
+crime incident reports (july 2012 - august 2015)
+department of neighborhood development - property inventory
+mayors 24 hour hotline (cases created last 90 days)
+street light control box, electric power cost & usage details
+street light retrofits(2014)
+tweets sent from @notifyboston from march 2014 - march 2015
+wicked free wi-fi daily connections
+boston open budget - capital budget
+boston open budget - capital project list

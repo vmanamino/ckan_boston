@@ -1,0 +1,14 @@
+with open('dataset_ids_report.txt') as ids:
+    lines = ids.read().splitlines()
+    header = 0
+    for line in lines:
+        if header:
+            line, code, id = line.split('\t')
+            if code == '200':
+                print('no change %s was correct' % line)
+            else:
+                print('%s changed to %s' % (line, id))
+            
+        header += 1
+        
+        
