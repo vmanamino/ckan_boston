@@ -1,4 +1,6 @@
 dataset id	code	comment
-911-daily-dispatch-count-by-agency	200	correct
-code-enforcement-building-and-property-violations	200	correct
-approved-building-permits	200	correct
+911-daily-dispatch-count-by-agency	200	correct id
+code-enforcement-building-and-property-violations	200	correct id
+cori-vendor-report-updated-as-of-may-2016	200	correct id
+approved-buildingpermits	404	incorrect id
+dnd-managed-city-property-inventory-all	200	correct id

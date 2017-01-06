@@ -25,7 +25,7 @@ with open('dataset_ids_report.1.txt') as ids:
     with open('dataset_to_patch_package_request.txt', 'w') as package_to_patch:
         package_to_patch.write('dataset id\tcode\tcomment\n')
         with open('dataset_patched.txt', 'w') as report:
-            report.write('dataset\tcode\n')
+            report.write('dataset\tcomment/code\n')
             lines = ids.read().splitlines()
             header = 0
             for line in lines:
@@ -52,7 +52,7 @@ with open('dataset_ids_report.1.txt') as ids:
                     
                     try:
                         response = urllib2.urlopen(package_request, data_string)
-                        package_to_patch.write('%s\t%s\tcorrect\n' % (dataset_id, response.code))
+                        package_to_patch.write('%s\t%s\tcorrect id\n' % (dataset_id, response.code))
                         
                         package_data = json.loads(response.read())
                         
@@ -67,11 +67,11 @@ with open('dataset_ids_report.1.txt') as ids:
                             legacy = 0
                             print(tag['name'])
                             if tag['name'] == 'legacy portal':
-                                print('has legacy portal tag')
+                                # this datasset has legacy portal tag, go no further
                                 legacy = 1
                                 break
                         if not legacy:
-                            print('this dataset does not have the tag')
+                            # this dataset does not have the tag: needs to be patched
                             tags.append({'name':'legacy portal'})
                             payload_id = id
                             payload_tags = tags
@@ -93,9 +93,9 @@ with open('dataset_ids_report.1.txt') as ids:
                             # print(tags)
                             
                         else:
-                            print('this dataset does have tag')
+                            report.write('%s\thad/has tag\n' % (line))
                         
                     except urllib2.HTTPError as err:
-                        package_to_patch.write('%s\t%s\tincorrect\n' % (dataset_id, err.code))
+                        package_to_patch.write('%s\t%s\tincorrect id\n' % (dataset_id, err.code))
                 header += 1
         
