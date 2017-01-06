@@ -5,6 +5,12 @@ First, we need to obtain the correct dataset id, so run
 the datasets.py script in this directory (ckan_boston/patches/subset/patch)
 Correct ids where noted in dataset_ids_report.txt file.
 
+Discovered two private datasets without mandatory fields,
+their tags, of course, could not be updated:
+
+boston-open-budget-capital-budget
+boston-open-budget-capital-project-list
+
 """
 
 
