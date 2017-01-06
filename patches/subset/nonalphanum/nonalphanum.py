@@ -22,6 +22,10 @@ The script to patch will create a report of what was actually patched.
 
 MAKE SURE to make all letters lowercase, you will have more success with your ids that way!
 
+Also, id is interchangeable in the API with name.  The dataset ids created/used here are actually
+the name parameter.  But the name can be passed in place of the special alphanumeric code as an id using
+the id parameter.  e.g. "id":"approved-building-permits"
+
 """
 
 
