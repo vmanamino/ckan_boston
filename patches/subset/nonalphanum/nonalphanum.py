@@ -48,7 +48,10 @@ with open('titles.txt') as titles:
             
 with open('nonalphnum.txt') as stringtolist:
     with open('cleaned_up.txt', 'w') as cleaned:
-        cleaned.write('these are the titles to formatted into ids by separating words with a single dash.\nCopy and paste into a separate text file called cleaned_and_formatted.txt and format.  Then add to dataset_ids.txt file\n\n')
+        cleaned.write('these are the titles to formatt into ids by separating words with a single dash.'
+        '\nSpaces have been replaced with a dash, but need to make sure that a single dash is present between'
+        'each word.\nCopy and paste into a separate text file called cleaned_and_formatted.txt and then format.'
+        'Then add to dataset_ids.txt file\n\n')
         with open('cleaned_up_report.txt', 'w') as report:
             nonalphanum = []   
             lines =  stringtolist.read().splitlines()

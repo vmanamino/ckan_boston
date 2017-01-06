@@ -14,6 +14,9 @@ with your tags parameter: tags [{name: new tag}] The solution is to append to th
 current tags list which can be got via package_show.  Append to the list returned
 then create a patch of the 'new' tags list, which has both the current tags and
 the one you want to add.
+
+Run this script first before running patch_request.py.  Also, after you run this script
+correct ids where incorrect is noted together with the code
 """
 
 import json, os

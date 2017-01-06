@@ -1,5 +1,49 @@
 dataset	comment/code
 911-daily-dispatch-count-by-agency	had/has tag
+all-section-12-alcohol-licenses	had/has tag
+approved-building-permits	had/has tag
+big-belly-alerts-2014	had/has tag
+big-belly-locations	had/has tag
+boston-jobs-policy-compliance-reports	had/has tag
+boston-neighborhood-shapefiles	had/has tag
+boston-police-department-fio	had/has tag
+boston-police-department-firearms-recovery-counts	had/has tag
+boston-public-library-daily-active-user-counts	had/has tag
+building-energy-and-water-use-metrics	had/has tag
+city-of-boston-owned-property	had/has tag
+dnd-managed-city-property-developable	200
+dnd-managed-city-property-inventory-all	had/has tag
+economic-indicators	200
+entertainment-licenses	200
+food-establishment-inspections	200
+hospital-locations	200
+liquor-licenses	200
+main-street-districts	200
+master-address-list	200
+municipal-energy-data	200
+park-boston-monthly-transactions-by-zone-2015	200
+parking-tickets-portal-web-statistics	200
+public-works-active-work-zones	200
+street-sweeping-schedules	200
+streetlight-locations	200
+trash-schedules-by-address	200
+vehicle-excise-tax-2014	200
+fy17-cob-gen-fund-budget	200
+fy16-cob-gen-fund-budget	200
+capital-project-phase-description	200
+fy17-adopted-budget-data	200
+checkbook-explorer	200
+311-service-requests	had/has tag
+btd-sign-shop-completed-workorders	had/has tag
+city-of-boston-utility-data-2011-2015	200
 code-enforcement-building-and-property-violations	had/has tag
 cori-vendor-report-updated-as-of-may-2016	had/has tag
-dnd-managed-city-property-inventory-all	409
+crime-incident-reports-july-2012-august-2015	200
+department-of-neighborhood-development-property-inventory	200
+mayors-24-hour-hotline-cases-created-last-90-days	200
+street-light-control-box-electric-power-cost-usage-details	200
+street-light-retrofits2014	200
+tweets-sent-from-notifyboston-from-march-2014-march-2015	200
+wicked-free-wifi-daily-connections	200
+boston-open-budget-capital-budget	409
+boston-open-budget-capital-project-list	409

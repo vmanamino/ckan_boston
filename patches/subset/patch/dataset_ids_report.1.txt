@@ -2,5 +2,5 @@ formatted id	response	correct id
 911-daily-dispatch-count-by-agency	200	correct
 code-enforcement-building-and-property-violations	200	correct
 cori-vendor-report-updated-as-of-may-2016	200	correct
-approved-buildingpermits	200	correct
+approved-building-permits	200	correct
 dnd-managed-city-property-inventory-all	200	correct
