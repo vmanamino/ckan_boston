@@ -18,7 +18,7 @@ is very small.  So, manually forming the ids will be quicker, but i have made th
 by removing all nonalphanumeric characters. except the space.  However,
 for a larger set of title, a program would be more efficient.
 Warning, the ids formed through this script are guesses at the ids.
-The script to patch will create a report of what was actually patched.
+The script [to patch] will create a report of what was actually patched.
 
 MAKE SURE to make all letters lowercase, you will have more success with your ids that way!
 
