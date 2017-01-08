@@ -1,0 +1,129 @@
+Building and property violations
+Violations on Boston buildings or properties issued by inspectors from the Building and Structures Division of the Inspectional Services Department.
+
+City of Boston food establishment inspections
+Food establishment inspections conducted routinely on an annual basis or on the basis of complaints.  Food establishment inspections done because of complaints are each assigned a risk category of Low, Medium, High, or Urgent on the basis of type of business and population being served.
+
+BRJP contract compliance data
+Data related to BRJP--monitored projects subject to the Boston Residents Jobs Policy (BRJP). BRJP monitored projects may be privately or publicly funded projects.
+
+Active work sites
+Location of current utility excavations.
+
+BPDA contract compliance data
+Data related to BPDA--monitored projects subject to the Boston Residents Jobs Policy (BRJP).  BPDA stands for Boston Planning & Development Agency.
+
+The City of Boston’s Tax Rate History
+This dataset outlines the residential tax rate, the commercial tax rate, and the residential exemption amount dating back to 1983. This year is significant because it was the first year that the City offered a residential exemption and the first year the City used a split rate (one rate for residential and a different rate for commercial, industrial, and personal property)
+
+Records destruction approvals
+Approved requests for destruction of city records. The retention period for each record series is defined by City and State retention schedules. Each request is subject to approval by the Archives and Records Management Division, the City Clerk, Corporation Counsel, and the State Supervisor of Public Records, in that order.
+
+Research statistics
+Requests taken and satisfied by Archives and Records Management.  Gives details for each request including time to service the request and demonstrates efforts to provide public and Boston municipal government with access to public records.
+
+Parking meter payments by method
+Demonstrates usage of coin and credit card payment methods and can help to identify trends in payment method.
+
+Building Energy Reporting and Disclosure Ordinance
+Boston enacted the Building Energy Reporting and Disclosure Ordinance in 2013, requiring large buildings to report their annual energy and water use to the City. As of 2015, the requirements apply to all buildings greater than 50,000 square feet. The ordinance also requires the City to make the information public. By providing better information on building energy use, reporting and disclosure is enabling owners and tenants to become more aware of energy use, energy costs, and greenhouse gas emissions and opportunities to reduce all three.<br /><br />This data set contains electricity, natural gas, and heating oil usage for all City buildings above 25,000 square feet. <br />
+
+Affordable/income restricted housing lotteries
+The Boston Fair Housing Commission (BFHC) oversees the marketing and the tenant selection process for income restricted and affordable housing. To comply with requirements set by BFHC, developers and their agents must conduct advertising and outreach in a fair and inclusive way that expands access to all, including those least likely to apply. Additionally, as part of the tenant selection process, the BFHC conducts housing lotteries when there are more applicants than there are units available of affordable/income restricted housing.  Housing is not distributed through the lotteries.  Instead, an affordable/income restricted housing lottery is the first step in establishing the order in which applicants will be offered the opportunity to apply for a unit.  The lottery is a randomization of the applicant pool.  After the lottery, the property developer or agent takes the list and sorts it further according to unit size, maximum income requirements, preference criteria, and then lottery number.      <br />
+
+Property Assessment
+Gives property, or parcel, ownership together with value information, which ensures fair assessment of Boston taxable and non-taxable property of all types and classifications.
+
+Assessing Online
+The Assessing Online application brings direct access for taxpayers, homeowners, real estate and legal professionals as well as business owners to property parcel data including assessed value, location, ownership and tax information for each piece of property in the city.<br /><br />The information assists homeowners directly in their ownership responsibilities by providing the current value and tax status of their property. Professional real estate, business and legal entities access and draw upon Boston property parcel data to support and enhance their specific business operations. The GIS data appended to this application provides valuable graphical contexts for researchers, analysts and other professionals interested in demographical patterns, property usage and development.
+
+Graffiti cleaned
+Includes the location, status (open or closed), and response time.
+
+After School Programs at Community Centers
+Provides location of centers, programs offered, facilities details, age-ranges, cost<br />
+
+Dockets filed by the Mayor
+Tracks dockets through the legislative process.<br />
+
+Parking freeze permits
+Includes Downtown and South Boston Parking Freeze permits.  Parking freezes are consistent with policies of the City and State established since 1972 to discourage automobile use in downtown Boston, to reduce vehicle miles traveled in the region, and to encourage and develop greater use of public transit. Parking freezes are consistent with planning objectives of maximizing pedestrian use downtown, using prime real estate for office, commercial, residential, and cultural uses that vitalize the downtown, rather than filling this area with parked automobiles.
+
+Economic & workforce development
+Provides overview of new businesses, business permitting, business licensing, tourism, and jobs creation.
+
+Tropical Storm Irene 2011
+Tropical Storm Irene City of Boston CAD/911 and Hotline/311 storm related Constituent Storm Service Requests
+
+Boston Cultural Council grants awarded
+The Boston Cultural Council (BCC) annually distributes funds allocated by the City of Boston and the Massachusetts Cultural Council to support innovative arts, humanities and interpretive sciences programming that enhances the quality of life in the City.  The BCC funds in two categories: 1) Program, or standard, Grants fund annual programming and specific projects that serve the city of Boston. 2) Field Trip Grants (formerly the PASS grant) reimburse schools and after-school programs the cost of admissions to Boston-based performing arts venue (no museums.)
+
+Constituent contacts
+Gives an idea the types of services people are interested in, where they live, and the languages they speak.  Helps to justify Budget.  Also, helps to populate Cityscore and Boston About Results (BAR).
+
+Cityscore
+Provides metrics on overall city health based on work done across all facets of the City of Boston.
+
+Fire incident reporting
+Fire incidents, to be shared with state and federal governments for reporting.  Supports resource allocation.
+
+Property inventory
+List of all properties owned by Department of Neighborhood Development
+
+Enterprise employment data
+Provides data on current employees reflected in the Demographics Dashboard.
+
+Entertainment licenses
+Annual and one-time licenses issued for entertainment, which includes radio, television, night clubs, and live and non-live entertainment. Live and non-live entertainment categories are further divided into sub-categories each with unique permissions.  See MOCAL Fees accompanying documentation.
+
+City Hall to Go master transaction
+Helps to determine the schedule of City Hall to Go, justify its growth, and develop new services.
+
+Fiscal year adopted budget
+Annual spending plan for City of Boston adopted by City of Boston July 1 annually.  Each distribution is for a single City of Boston Fiscal Year.  City of Boston Fiscal Year runs from July 1 to June 30.  Prior to adoption, the City Council approves the Fiscal Year Recommended Budget following negotiations with City Department Heads.
+
+Clough House Archaeology
+Catalog of archaeological artifacts excavated in 2013 from the rear of the Clough House, 21 Unity St., North End, Boston.  Data set created to complete analysis and report of the archaeological survey.  Collection spans 1715-1950 and includes colonial artifacts and artifacts from English, Irish, Italian, and other immigrant peoples living in the house after 1800.
+
+Economic indicators
+Gives you an idea of Boston Economic Health based on a number of indicators including labor market , tourism and BPDA development numbers.
+
+City of Boston bid results
+What the city is looking to procure; responses, price, selection and award.<br />
+
+Daily active user counts
+Represents Boston Public Library on Mayor’s dashboard: measures how many people use the library daily based on card usage.  For each card number, usage is unique on the day: multiple uses of same card on a given day are represented once
+
+Traffic-related data
+Traffic-related data collected by the Boston Transportation Department, as well as other City departments and State agencies.  Various types of counts: Turning Movement Counts, Automated Traffic Recordings, Pedestrian Counts, Delay Studies, and Gap Studies.<br /><br />Turning Movement Counts (TMC) present the number of motor vehicles, pedestrians, and cyclists passing through the particular intersection. Specific movements and crossings are recorded for all street approaches involved with the intersection. This data is used in traffic signal retiming programs and for signal requests.  Counts are typically conducted for 2-, 4-, 11-, and 12-Hr periods.          <br /><br />Automated Traffic Recordings (ATR) record the volume of motor vehicles traveling along a particular road, measures of travel speeds, and approximations of the class of the vehicles (motorcycle, 2-axle, large box truck, bus, etc).  This type of count is conducted only along a street link/corridor, to gather data between two intersections or points of interest.  This data is used in travel studies, as well as to review concerns about street use, speeding, and capacity. Counts are typically conducted for 12- & 24-Hr periods.<br /><br />Pedestrian Counts (PED) record the volume of individual persons crossing a given street, whether at an existing intersection or a mid-block crossing.  This data is used to review concerns about crossing safety, as well as for access analysis for points of interest.   Counts are typically conducted for 2-, 4-, 11-, and 12-Hr periods. <br /><br />Delay Studies (DEL) measure the delay experienced by motor vehicles due to the effects of congestion.  Counts are typically conducted for a 1-Hr period at a given intersection or point of intersecting vehicular traffic. <br /><br />Gap Studies (GAP) record the number of gaps which are typically present between groups of vehicles traveling through an intersection or past a point on a street.  This data is used to assess opportunities for pedestrians to cross the street and for analyses on vehicular “platooning”.  Counts are typically conducted for a specific 1-Hr period at a single point of crossing.  <br /><br />
+
+Rainfall data
+The Boston Water and Sewer Commission (BWSC) maintains collection sites throughout the city.  Those collection sites are equipped with solar powered rain gauges on top of public buildings which log measurements of precipitation and which report data every five minutes.  Here you find the link to the Boston Water and Sewer Commission’s interface to the rainfall data, which is updated continually.  You can search for rainfall data going as far back as 1999, depending on the year of installation for the various gauges.
+
+911 dispatches
+911 calls listed by case indicating response of Boston Police to an emergency situation.
+
+Commissioner Events Attendance
+Records the public engagements or events the Commissioner of Veterans Services attended
+
+Chapter 115 financial services for indigent veterans and their dependents
+Shows money distributed to veterans under Chapter 115 of Massachusetts General Laws.  Individual allotments aggregated by neighborhood or by homeless status at the time of receiving services. <br />
+
+Fiscal year recommended budget
+Annual spending plan for City of Boston.  Each distribution is for a single City of Boston Fiscal Year.  City of Boston fiscal year runs from July 1 to June 30.  The recommended budget is submitted for approval to the City Council to be adopted by the City.  See data set 'Fiscal year adopted budget.'
+
+Approved Issued Building Permits
+Gives details on each permit issued by the City of Boston Inspectional Services Department (ISD). Permit types include Long Form (Alteration, Erect), Short Form, Gas, Electrical, Plumbing, Foundation, and Use of Premises.  Additional information on the permit types is available in the Distribution 'Building Permit Types.'
+
+Boston EMS transports by age
+Emergency medical incidents resulting in a transport by Boston EMS.  Organized by age and by year.  Transport is a 911 response where patient was moved from incident by Boston EMS to hospital emergency department. An incident is any request for emergency medical service which generates a distinct entry in the computer aided dispatch (CAD) system. A single incident may generate the response of multiple EMS vehicles or may involve multiple patients (i.e. a train crash would be considered one “incident”).
+
+Boston EMS incidents by neighborhood
+911 emergency incidents requiring Boston EMS. Grouped by City of Boston neighborhoods as defined by the City of Boston Computer Aided Dispatch System, or CAD.  An "incident" is any request for emergency medical service which generates a distinct entry in the computer aided dispatch (CAD) system. A single incident may generate the response of multiple EMS vehicles or may involve multiple patients (i.e. a train crash would be considered one “incident”).<br />
+
+Employee earnings report
+City of Boston employee earnings by year.
+
+311 Service Requests
+This data set includes all channels of engagement in which a service request is created.
+
