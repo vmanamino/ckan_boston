@@ -12,7 +12,7 @@ Get Data
 Prepare Data
     Knack data laid out in columns -- Done
     Mapping to CKAN and necessary transformations -- Current
-    CKAN metadata laid out in columns
+    CKAN metadata laid out in columns -- irrelevant
     CKAN [metadata] formatted for creation
 Create Metadata
     CREATE call to CKAN
@@ -39,7 +39,15 @@ knack_app_id = os.environ['KNACK_APPLICATION_ID']
     
 knack_api_key= os.environ['KNACK_API_KEY']
 
-
+# deal with empty values, currently understood as empty strings
+# pass only the values in, not the key value pair
+def value_none(val):
+    value = ''
+    if not val:
+        value = 'none'
+    else:
+        value = val
+    return value
 
 # candidate for library...
 # function to create multiple values in case relation of object to 
@@ -201,6 +209,9 @@ with open('knack_metadata.txt', 'w') as knack:
         # for description to create notes parameter.
         desc = record['id']
         provider = list_values(record['field_186_raw'])
+        if not provider[0]:
+            provider = 'none'
+        print(provider)
         source = list_values(record['field_164_raw'])
         publisher = list_values(record['field_205_raw'])
         classification = list_values(record['field_155_raw'])
@@ -220,6 +231,7 @@ with open('knack_metadata.txt', 'w') as knack:
             temp_to = 'none'
         
         temporal_notes = record['field_159_raw'].strip()
+        temporal_notes = value_none(temporal_notes)
         topics = list_values(record['field_146_raw'])
         location = list_values(record['field_136_raw'])
         
@@ -259,7 +271,7 @@ with open('knack_metadata.txt', 'w') as knack:
         
         knack.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}\t{13}"
             "\t{14}\t{15}\t{16}\n".format(
-            title, desc, btype, provider, source, publisher, classification, open_value,
+            title, btype, desc, provider, source, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1]))
 
