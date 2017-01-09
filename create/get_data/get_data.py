@@ -8,10 +8,10 @@ Please see the mapping created for this task.
 transformation requires the following steps:
 
 Get Data
-    Knack GET calls, and analysis of responses
+    Knack GET calls, and analysis of responses -- Done
 Prepare Data
-    Knack data laid out in columns
-    Mapping to CKAN and necessary transformations
+    Knack data laid out in columns -- Done
+    Mapping to CKAN and necessary transformations -- Current
     CKAN metadata laid out in columns
     CKAN [metadata] formatted for creation
 Create Metadata
@@ -188,9 +188,14 @@ with open('knack_metadata.txt', 'w') as knack:
     for record in records:
         title = record['field_5_raw'].strip()
         btype = list_values(record['field_152_raw'])
+        
         # description assigned but not written because of hidden characters which 
         # interrupt formatting for report
-        desc =  record['field_6_raw'].strip()
+        # desc =  record['field_6_raw'].strip()
+        # Description to large in most cases to include in file.
+        # Instead include object reference.  Together with field (field_6), can easily query
+        # for description to create notes parameter.
+        desc = record['id']
         provider = list_values(record['field_186_raw'])
         source = list_values(record['field_164_raw'])
         publisher = list_values(record['field_205_raw'])
@@ -248,9 +253,9 @@ with open('knack_metadata.txt', 'w') as knack:
             contact_name = 'none'
             contact_info_list = ['none', 'none']
         
-        knack.write("{0}\tdesc\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}"
-            "\t{13}\t{14}\t{15}\n".format(
-            title, btype, provider, source, publisher, classification, open_value,
+        knack.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}\t{13}"
+            "\t{14}\t{15}\t{16}\n".format(
+            title, desc, btype, provider, source, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1]))
 

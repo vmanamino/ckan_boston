@@ -1,3 +1,8 @@
+"""
+Could not get the Knack API filter to work
+"""
+
+
 import json, os
 import pprint
 import sys
