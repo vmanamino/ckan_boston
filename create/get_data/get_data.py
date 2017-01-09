@@ -60,6 +60,76 @@ def date_formatted(time_obj):
     temporal = time.strftime('%Y-%m-%d', time.gmtime(stamp/1000.))
     return temporal
 
+def get_contact_info(obj):
+    attributes = obj
+    
+    # contact is only one per dataset in our scheme, so can be confident in first place of all info
+    contact_identifier = attributes[0]['id']
+    
+    # both id and key are needed.  Id is for the specific application.
+    # the key is to gain 'read' and 'write' permissions
+    knack_app_id = os.environ['KNACK_APPLICATION_ID']
+    
+    knack_api_key= os.environ['KNACK_API_KEY']
+    
+    
+    # data_string = urllib.quote(json.dumps(payload))
+    
+    # will have to prep request to add ID and KEY as headers
+    url = 'https://api.knack.com/v1/objects/object_36/records/'+contact_identifier
+    request = urllib2.Request(url)
+                        
+    request.add_header('X-Knack-Application-Id', knack_app_id)
+    
+    request.add_header('X-Knack-REST-API-Key', knack_api_key)
+    
+    try:
+        r = urllib2.urlopen(request)
+    except urllib2.HTTPError as err:
+        r = err.code
+    
+    response = json.loads(r.read())
+    
+    contact_info = get_gov_entity_info(response['field_216_raw'][0]['id'])
+    
+    # contact_info = json.loads(gov_entity_response.read())
+    
+    return contact_info
+    
+def get_gov_entity_info(identifier):
+    url = 'https://api.knack.com/v1/objects/object_3/records/'+identifier
+    
+    knack_app_id = os.environ['KNACK_APPLICATION_ID']
+    
+    knack_api_key= os.environ['KNACK_API_KEY']
+    
+    request = urllib2.Request(url)
+                        
+    request.add_header('X-Knack-Application-Id', knack_app_id)
+    
+    request.add_header('X-Knack-REST-API-Key', knack_api_key)
+    
+    try:
+        r = urllib2.urlopen(request)
+    except urllib2.HTTPError as err:
+        r = err.code
+    
+    response = json.loads(r.read())
+    
+    info = []
+    if response['field_12_raw']['email']:
+        email = response['field_12_raw']['email']
+        info.append(email)
+    else:
+        info.append('none')
+    if response['field_13_raw']['formatted']:
+        phone = response['field_13_raw']['formatted']
+        info.append(phone)
+    else:
+        info.append('none')
+        
+    return info
+    
 def get_knack_data(page="1"):
     # both id and key are needed.  Id is for the specific application.
     # the key is to gain 'read' and 'write' permissions
@@ -113,7 +183,7 @@ else:
         
 with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
-    '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact'
+    '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
     '\tcontact email\tcontact phone\n')
     for record in records:
         title = record['field_5_raw'].strip()
@@ -144,9 +214,45 @@ with open('knack_metadata.txt', 'w') as knack:
         topics = list_values(record['field_146_raw'])
         location = list_values(record['field_136_raw'])
         
-        knack.write("{0}\tdesc\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\n".format(
+        """
+        Get contact info.  Was not able to get Knack filter to work.
+        Display name for Gov Entity (Object 3) which is the parent of Contact is
+        the Title, which is appropriate for two reasons.  1: Labels can be many and for different
+        purposes, the title is single and authoritative.  The value must be unique.
+        2: Since Title is Display Name and unique, it can be queried on from the value supplied to Dataset (Object 2),
+        and any changes to the Title will cascade to the Contact (Object 36), 
+        and in turn to Dataset (Object 2)
+        """
+        # there is only one contact per dataset, so can be confident of first place in list
+        
+        contact_name = ''
+        contact_info_list = []
+        
+        if record.has_key('field_147'):
+            if (record['field_147']):
+                contact_name = record['field_147_raw'][0]['identifier'].strip()
+                print(contact_name)
+                try:
+                    contact_info_list = get_contact_info(record['field_147_raw'])
+                    
+                except:
+                    e = sys.exc_info()[0]
+                    contact_info_list = ['none', 'none']
+                    print(e)
+            else:
+                print(record['field_5']+' has no contact')
+                contact_name = 'none'
+                contact_info_list = ['none', 'none']
+        else:
+            print(record['field_5'] + 'has no contact field key')
+            contact_name = 'none'
+            contact_info_list = ['none', 'none']
+        
+        knack.write("{0}\tdesc\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}"
+            "\t{13}\t{14}\t{15}\n".format(
             title, btype, provider, source, publisher, classification, open_value,
-            freq, temp_from, temp_to, temporal_notes, topics))
+            freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
+            contact_info_list[1]))
 
 
 
