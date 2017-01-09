@@ -37,7 +37,7 @@ sys.setdefaultencoding('utf-8')
 
 knack_app_id = os.environ['KNACK_APPLICATION_ID']
     
-knack_api_key= os.environ['KNACK_API_KEY']
+    knack_api_key= os.environ['KNACK_API_KEY']
 
 
 
@@ -70,11 +70,11 @@ def get_contact_info(obj):
     # contact is only one per dataset in our scheme, so can be confident in first place of all info
     contact_identifier = attributes[0]['id']
     
-    # # both id and key are needed.  Id is for the specific application.
-    # # the key is to gain 'read' and 'write' permissions
-    # knack_app_id = os.environ['KNACK_APPLICATION_ID']
+    # both id and key are needed.  Id is for the specific application.
+    # the key is to gain 'read' and 'write' permissions
+    knack_app_id = os.environ['KNACK_APPLICATION_ID']
     
-    # knack_api_key= os.environ['KNACK_API_KEY']
+    knack_api_key= os.environ['KNACK_API_KEY']
     
     
     # data_string = urllib.quote(json.dumps(payload))
@@ -103,9 +103,9 @@ def get_contact_info(obj):
 def get_gov_entity_info(identifier):
     url = 'https://api.knack.com/v1/objects/object_3/records/'+identifier
     
-    # knack_app_id = os.environ['KNACK_APPLICATION_ID']
+    knack_app_id = os.environ['KNACK_APPLICATION_ID']
     
-    # knack_api_key= os.environ['KNACK_API_KEY']
+    knack_api_key= os.environ['KNACK_API_KEY']
     
     request = urllib2.Request(url)
                         
@@ -137,9 +137,9 @@ def get_gov_entity_info(identifier):
 def get_knack_data(page="1"):
     # both id and key are needed.  Id is for the specific application.
     # the key is to gain 'read' and 'write' permissions
-    # knack_app_id = os.environ['KNACK_APPLICATION_ID']
+    knack_app_id = os.environ['KNACK_APPLICATION_ID']
     
-    # knack_api_key= os.environ['KNACK_API_KEY']
+    knack_api_key= os.environ['KNACK_API_KEY']
     
     
     # data_string = urllib.quote(json.dumps(payload))
@@ -193,7 +193,7 @@ with open('knack_metadata.txt', 'w') as knack:
         title = record['field_5_raw'].strip()
         btype = list_values(record['field_152_raw'])
         
-        # description assigned but not written because of hidden characters which 
+        # Instead include object reference.  Together with field (field_6), can easily query
         # interrupt formatting for report
         # desc =  record['field_6_raw'].strip()
         # Description to large in most cases to include in file.
