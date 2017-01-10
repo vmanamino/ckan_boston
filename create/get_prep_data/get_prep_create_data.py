@@ -736,11 +736,7 @@ with open('knack_metadata.txt', 'w') as knack:
             title, dataset_types, desc, knack_provider, knack_sources, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1], keywords))
-
-        report = open('package_report.txt', 'w')
-        report.write('super important, record of knack inventory as CKAN IDs\n\n')
-        report.write('package id\tcode\n')
-        report.write('%s\t' % name)
+        
         contact_point = ckan_providers(contact_name)
         if contact_info_list[0] == "none": 
             contact_point_email = 'opengov@cityofboston.gov'
@@ -775,10 +771,8 @@ with open('knack_metadata.txt', 'w') as knack:
         ## make request
         try:
             response = urllib2.urlopen(request, data_string)
-            report.write('%s\n' % response.code)
             print(response)
         except urllib2.HTTPError as err:
-            report.write('%s\n' % err.code)
             print(err)
             
 

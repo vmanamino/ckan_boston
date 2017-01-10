@@ -1,5 +1,89 @@
 super important, record of knack inventory as CKAN IDs
 
-package id	code
-311-service-requests	200
-200
+Building and property violations
+<addinfourl at 140496048279208 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+City of Boston food establishment inspections
+<addinfourl at 140496048314992 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+BRJP contract compliance data
+<addinfourl at 140496048342872 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+Active work sites
+<addinfourl at 140496048366008 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+BPDA contract compliance data
+<addinfourl at 140496048369536 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+The City of Boston’s tax rate history
+<addinfourl at 140496048376360 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+Records destruction approvals
+<addinfourl at 140496048424720 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Research statistics
+<addinfourl at 140496048444480 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+Parking meter payments by method
+<addinfourl at 140496048476312 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Building Energy Reporting and Disclosure Ordinance
+HTTP Error 409: Conflict
+Affordable/income restricted housing lotteries
+<addinfourl at 140496048499672 whose fp = <socket._fileobject object at 0x7fc7c982f4d0>>
+Property Assessment
+<addinfourl at 140496047986736 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Assessing Online
+<addinfourl at 140496048018496 whose fp = <socket._fileobject object at 0x7fc7c982f4d0>>
+Graffiti cleaned
+<addinfourl at 140496048038040 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+After school programs at community centers
+<addinfourl at 140496048018640 whose fp = <socket._fileobject object at 0x7fc7c982f4d0>>
+Dockets filed by the Mayor
+<addinfourl at 140496048018928 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Parking freeze permits
+<addinfourl at 140496047985440 whose fp = <socket._fileobject object at 0x7fc7c982f4d0>>
+Economic & workforce development
+<addinfourl at 140496048498232 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+Tropical storm Irene 2011
+HTTP Error 409: Conflict
+Boston Cultural Council grants awarded
+<addinfourl at 140496048446352 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+Constituent contacts
+<addinfourl at 140496048480056 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+Cityscore
+<addinfourl at 140496048425656 whose fp = <socket._fileobject object at 0x7fc7c982fb50>>
+Fire incident reporting
+<addinfourl at 140496048375568 whose fp = <socket._fileobject object at 0x7fc7c90c77d0>>
+Property inventory
+<addinfourl at 140496048368600 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Enterprise employment data
+<addinfourl at 140496048344600 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Entertainment licenses
+<addinfourl at 140496048341504 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+City Hall to Go master transaction
+<addinfourl at 140496048316000 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Fiscal year adopted budget
+<addinfourl at 140496048278776 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Clough House archaeology
+HTTP Error 409: Conflict
+Economic indicators
+HTTP Error 409: Conflict
+City of Boston bid results
+<addinfourl at 140496048069088 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Daily active user counts
+<addinfourl at 140496048105016 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Traffic-related data
+<addinfourl at 140496048116368 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Rainfall data
+<addinfourl at 140496048117880 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+911 dispatches
+<addinfourl at 140496048139008 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Commissioner events attendance
+<addinfourl at 140496048154744 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Chapter 115 financial services for indigent veterans and their dependents
+<addinfourl at 140496048155824 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Fiscal year recommended budget
+<addinfourl at 140496048181120 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Approved issued building bermits
+<addinfourl at 140496048195056 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Boston EMS transports by age
+<addinfourl at 140496048224376 whose fp = <socket._fileobject object at 0x7fc7ca5b2350>>
+Boston EMS incidents by neighborhood
+<addinfourl at 140496047719560 whose fp = <socket._fileobject object at 0x7fc7ca603ad0>>
+Employee earnings report
+<addinfourl at 140496047719848 whose fp = <socket._fileobject object at 0x7fc7ca5f19d0>>
+311 service requests
+<addinfourl at 140496047736232 whose fp = <socket._fileobject object at 0x7fc7c90c7850>>
+
