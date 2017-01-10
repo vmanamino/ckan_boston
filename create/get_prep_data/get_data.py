@@ -17,6 +17,8 @@ Prepare Data
 Create Metadata
     CREATE call to CKAN
     reports of success, failure for each CREATE call
+    
+include prep_data.py script in this and write directly to CKAN
 """
 
 import json, os
@@ -52,16 +54,17 @@ def value_none(val):
 # candidate for library...
 # function to create multiple values in case relation of object to 
 # dataset is 'many'.   Each value will be separated with pipe character.
-def list_values(list):
-    count = len(list)
+def list_values(list_obj):
+    count = len(list_obj)
     value_list = []
     
-    if count:
+    # assumes that with first element empty, no values at all
+    if count and list_obj[0]['identifier']:
         if count > 1:
-            for obj in list:
+            for obj in list_obj:
                 value_list.append(str(obj['identifier']))
         else:
-            value_list.append(str(list[0]['identifier']))
+            value_list.append(str(list_obj[0]['identifier']))
         return_obj = value_list
     else:
         return_obj = "none"
@@ -77,15 +80,6 @@ def get_contact_info(obj):
     
     # contact is only one per dataset in our scheme, so can be confident in first place of all info
     contact_identifier = attributes[0]['id']
-    
-    # # both id and key are needed.  Id is for the specific application.
-    # # the key is to gain 'read' and 'write' permissions
-    # knack_app_id = os.environ['KNACK_APPLICATION_ID']
-    
-    # knack_api_key= os.environ['KNACK_API_KEY']
-    
-    
-    # data_string = urllib.quote(json.dumps(payload))
     
     # will have to prep request to add ID and KEY as headers
     url = 'https://api.knack.com/v1/objects/object_36/records/'+contact_identifier
@@ -110,10 +104,6 @@ def get_contact_info(obj):
     
 def get_gov_entity_info(identifier):
     url = 'https://api.knack.com/v1/objects/object_3/records/'+identifier
-    
-    # knack_app_id = os.environ['KNACK_APPLICATION_ID']
-    
-    # knack_api_key= os.environ['KNACK_API_KEY']
     
     request = urllib2.Request(url)
                         
@@ -196,7 +186,7 @@ else:
 with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
     '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
-    '\tcontact email\tcontact phone\n')
+    '\tcontact email\tcontact phone\tkeywords\n')
     for record in records:
         title = record['field_5_raw'].strip()
         btype = list_values(record['field_152_raw'])
@@ -209,13 +199,12 @@ with open('knack_metadata.txt', 'w') as knack:
         # for description to create notes parameter.
         desc = record['id']
         provider = list_values(record['field_186_raw'])
-        if not provider[0]:
-            provider = 'none'
         print(provider)
         source = list_values(record['field_164_raw'])
         publisher = list_values(record['field_205_raw'])
         classification = list_values(record['field_155_raw'])
         open_value = record['field_308_raw']
+        open_value =  value_none(open_value)
         freq = list_values(record['field_139_raw'])
         
         """
@@ -234,6 +223,7 @@ with open('knack_metadata.txt', 'w') as knack:
         temporal_notes = value_none(temporal_notes)
         topics = list_values(record['field_146_raw'])
         location = list_values(record['field_136_raw'])
+        keywords = list_values(record['field_321_raw'])
         
         """
         Get contact info.  Was not able to get Knack filter to work.
@@ -270,10 +260,10 @@ with open('knack_metadata.txt', 'w') as knack:
             contact_info_list = ['none', 'none']
         
         knack.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}\t{13}"
-            "\t{14}\t{15}\t{16}\n".format(
+            "\t{14}\t{15}\t{16}\t{17}\n".format(
             title, btype, desc, provider, source, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
-            contact_info_list[1]))
+            contact_info_list[1], keywords))
 
 
 
