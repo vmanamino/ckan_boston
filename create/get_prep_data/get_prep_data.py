@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+
 """
 The aim is to create dataset metadata on the Boston Open Data Hub.
 This script will use metadata already created on a Knack database.
@@ -32,6 +34,9 @@ import urllib
 sys.path.append('/home/ubuntu/workspace/code/ckan_boston')
 import keys
 reload(sys)
+
+# CKAN API key
+key = os.environ['CKAN_API_KEY'];
 
 # Knack response header:
 # Content-Type application/json; charset=utf-8
@@ -163,31 +168,267 @@ functions to assign fixed values to parameters, later to be used in
 building a library/module
 """
 
-def classifications(entity):
-    
-    return
+def classifications(label):
+    value = ""
+    if not label == "none" or label == "":
+        label = label[0]
+    if label == "Exempt Record":
+        value = "exempt"
+    elif label == "Public Record":
+        value = "public"
+    else:
+        value = "exempt"
+    return value
 
-def frequencies(entity):
-    
-    return
+def frequencies(label):
+    value = ""
+    if not label == "none":
+        label = label[0]
+#     label: Continuously updated
+#     value: R/PT1S
+    if label == "Daily":
+        value = "R/P1D"
+#   - label: Three times a week
+#     value: R/P0.33W
+#   - label: Semiweekly
+#     value: R/P3.5D
+    elif label == "Weekly":
+        value = "R/P1W"
+#   - label: Three times a month
+#     value: R/P0.33M
+#   - label: Biweekly
+#     value: R/P2W
+#   - label: Semimonthly
+#     value: R/P0.5M
+    elif label == "Monthly":
+        value = "R/P1M"
+#   - label: Bimonthly
+#     value: R/P2M
+    elif label == "Quarterly":
+        value = "R/P3M"
+#   - label: Three times a year
+#     value: R/P4M
+#   - label: Semiannual
+#     value: R/P6M
+    elif label == "Annual":
+        value = "R/P1Y"
+    elif label == "Biennial":
+        value = "R/P2Y"
+#   - label: Triennial
+#     value: R/P3Y
+    else:
+        value = "none"
+    return value
 
 # aka owner_org
-def gov_entities(entity):
+def owner_orgs(label):
+    value = ""
+    if not label == "none":
+        label = label[0]
+    if label == "Department of Innovation and Technology" or label == "none":
+        value = "data-cityofboston-gov"
+    elif label == "Boston Water and Sewer Commission":
+        value = "water-and-sewer-commission"
+    else:
+        value = "data-cityofboston-gov"
+    # "environment-org",
+    # "housing-authority",
+    # "innovation-and-technology",
+    # "transportation-org",
     
-    
-    return
+    return value
 
-def open_values(value):
-    
-    return
+def open_values(label):
+    value = "open"
+    if label == "no" or label == "none":
+        value = "closed"
+    return value
 
-def providers(entity):
-    
-    return
+def ckan_providers(label):
+    # print(label)
+    value = ""
+    if not type(label) == str:
+        label = label[0]
+    if label == "Administration & Finance":
+        value = "finance"
+    elif label == "Archives and Records Management":
+        value = "archives"
+    elif label == "Arts & Culture":
+        value = "arts"
+    elif label == "Assessing Department":
+        value = "assessing"
+    elif label == "Assistant Director of Operations, Consumer Affairs and Licensing":
+        value = "consumer_asst"
+    elif label == "Boston 311":
+        value = "311"
+    elif label == "Boston Centers for Youth and Families":
+        value = "youth"
+    elif label == "Boston EMS":
+        value = "ems"
+    elif label == "Boston Fire Department":
+        value = "fire"
+    elif label == "Boston Planning & Development Agency":
+        value = "planning"
+    elif label == "Boston Police Department":
+        value = "police"
+    elif label == "Boston Public Health Commission":
+        value = "health_commission"
+    elif label == "Boston Public Library":
+        value = "library"
+    elif label == "Boston Public Schools":
+        value = "schools"
+    elif label == "Boston Transportation Department":
+        value = "transportation"
+    elif label == "Boston Water and Sewer Commission":
+        value = "water"
+    elif label == "BPDA Management Information Systems":
+        value == "bpda"
+    elif label == "City Clerk":
+        value = "clerk"
+    elif label == "City of Boston Archaeology Program":
+        value = "archaeology"
+    elif label == "Civic engagement":
+        value = "civic_engagement"
+    elif label == "Consumer Affairs & Licensing Department":
+        value = "consumer"
+    elif label == "Data Literacy Librarian, Boston Open Data":
+        value = "data_literacy"
+    elif label == "Department of Innovation and Technology" or label == "none":
+        value = "innovation"
+    elif label == "Department of Neighborhood Development":
+        value = "neighborhood_development"
+    elif label == "Deputy Director, Real Estate Management and Sales":
+        value = "real_estate"
+    elif label == "Director of Publicity, Inspectional Services Department":
+        value = "inspectional_publicity"
+    elif label == "Director of Publicity, ISD":
+        value = "publicity"
+    elif label == "Director of Tax Policy & Communications":
+        value = "tax_policy"
+    elif label == "DoIT Data & Analytics":
+        value = "doit_data"
+    elif label == "Economic Development":
+        value = "economic"
+    elif label == "Education":
+        value = "education"
+    elif label == "Energy Manager, Environment Department":
+        value = "energy_manager"
+    elif label == "Environment, energy, and open space":
+        value = "environment_energy"
+    elif label == "Environment Department":
+        value = "environment"
+    elif label == "Fair Housing & Equity":
+        value = "fair_housing"
+    elif label == "GIS Team":
+        value = "gis"
+    elif label == "Health and human services":
+        value = "health"
+    elif label == "Housing & Neighborhood Development":
+        value = "housing"
+    elif label == "Information and Technology Cabinet":
+        value = "it_cabinet"
+    elif label == "Inspectional Services Department":
+        value = "inspectional"
+    elif label == "Intergovernmental Relations":
+        value = "intergovernmental_relations"
+    elif label == "Manager, DoIT GIS Team":
+        value = "doit_gis"
+    elif label == "Manager, Procurement Systems":
+        value = "procurement"
+    elif label == "Mayor's Office for Immigrant Advancement":
+        value = "immigrant_advancement"
+    elif label == "Mayor's Office of Emergency Management Services":
+        value = "emergency_management"
+    elif label == "Mayor":
+        value = "mayor"
+    elif label == "Neighborhood Services":
+        value = "neighborhood"
+    elif label == "Non-mayoral departments":
+        value = "non_mayoral"
+    elif label == "Office/Finance Manager, City of Boston Environment":
+        value = "environment_manager"
+    elif label == "Office of Arts & Culture":
+        value = "arts_office"
+    elif label == "Office of Budget Management":
+        value = "budget"
+    elif label == "Office of Economic Development":
+        value = "economic_office"
+    elif label == "Office of Human Resources":
+        value = "hr"
+    elif label == "Office of the Parking Clerk":
+        value = "parking"
+    elif label == "Operations":
+        value = "operations"
+    elif label == "Property Management":
+        value = "property"
+    elif label == "Public safety":
+        value = "safety"
+    elif label == "Purchasing Division":
+        value = "purchasing"
+    elif label == "Senior Systems and Network Operations Specialist, Boston Fire Department":
+        value = "fire_operations"
+    elif label == "Streets, transportation, and sanitation":
+        value = "streets"
+    elif label == "System Administrator, Office of Budget Management":
+        value = "budget_admin"
+    elif label == "Veterans Services":
+        value = "veterans"
+    else: # mandatory default
+        value = "innovation"
+    return value
 
-def sources(entity):
+def ckan_sources(label):
+    value = ""
+    if label == "Airport Statistics, Massport":
+        value = "airport_statistics"
+    if label == "ArcGIS REST Services":
+        value = "arcgis_rest"
+    if label == "Boston EMS electronic patient care report system":
+        value = "ems_patient_care_report_system"
+    if label == "Boston Police Department Crime Statistics Feed":
+        value = "police_crime_stats_feed"
+    if label == "Boston Public Library enterprise integrated library system (ILS)":
+        value = "integrated_library_system"
+    if label == "Bostracks Enfocus":
+        value = "bostracks_enfocus"
+    if label == "BPDA (Boston Planning & Development Agency) contract compliance database":
+        value = "bpda_contract_compliance_db"
+    if label == "BRA pipeline database":
+        value = "bra_pipeline_db"
+    if label == "City Clerk documents and assigned docket numbers":
+        value ="city_clerk_documents"
+    if label == "City Constituent Relationship Management (CRM) System":
+        value = "constituent_relationship_management_system"
+    if label == "City of Boston document management system":
+        value = "document_management_system"
+    if label == "City of Boston Enterprise Resource Planning System, Financials":
+        value = "resource_planning_system_financials"
+    if label == "City of Boston Enterprise Resource Planning System, Human Capital Management (HCM)":
+        value = "resource_planning_system_human_capital"
+    if label == "City of Boston Voice over IP (VOIP) System":
+        value = "voip_system"
+    if label == "City wide Budgeting and Forecasting Application":
+        value = "budgeting_and_forecasting_app"
+    if label == "City wide Enterprise Energy Management System":
+        value = "energy_management_system"
+    if label == "City wide Enterprise Permitting and Licensing Software":
+        value = "permitting_and_licensing_software"
+    if label == "Computer aided dispatch system (CAD)":
+        value = "computer_aided_dispatch_system"
+    if label == "Department of Neighborhood Development Data Server":
+        value = "neighborhood_development_server"
+    if label == "ENERGY STAR Portfolio Manager®":
+        value = "energy_star_portfolio_manager"
+    if label == "Internal":
+        value = "internal"
+    if label == "IPS Data Management System (DMS)":
+        value = "ips_data_management_system"
+    if label == "Labor Market Information, The Official Website of the Executive Office of Labor and Workforce Development (EOLWD)":
+        value = "labor_market_info"
+    if label == "Massachusetts Artifact Tracking System (MATS)":
+        value = "massachusetts_artifact_tracking_system"
     
-    return
+    return value
 
 def themes(entity):
     
@@ -199,69 +440,88 @@ def locations(entity):
     
     return
 
-def types(entity):
+def btypes(entity):
+    value = ""
+    if entity == "Audio":
+        value = "audio"
+    if entity == "Image":
+        value = "image"
+    if entity == "Charts":
+        value = "charts"
+    if entity == "Map":
+        value = "map"
+    if entity == "Calendar":
+        value = "calendar"
+    if entity == "Forms":
+        value = "forms"
+    if entity == "External":
+        value = "external"
+    if entity == "Files and documents":
+        value = "files_and_documents"
+    if entity == "Tabular":
+        value = "tabular"
     
-    return
+    return value
 
-"""
-CKAN parameters
-"""
- # title_translated-en: "string" ; mandatory
-title_translated = ""
+# """
+# CKAN parameters
+# """
+#  # title_translated-en: "string" ; mandatory
+# title_translated = ""
 
-# name: "slugged-title" ; required
-name = ""
+# # name: "slugged-title" ; required
+# name = ""
 
-# btype: ["fixed values"]
-btype = []
+# # btype: ["fixed values"]
+# btype_list = []
 
-# notes_translated: {"en":"string"}
-notes_translated = ""
+# # notes_translated: {"en":"string"}
+# notes_translated = ""
 
-# provider: "string" (fixed value) ; mandatory
-provider = ""
+# # provider: "string" (fixed value) ; mandatory
+# provider = ""
 
-# source: ["fixed values"]
-source = []
+# # source: ["fixed values"]
+# source = []
 
-# owner_org: "string" (fixed value); required 
-owner_org = ""
+# # owner_org: "string" (fixed value); required 
+# owner_org = ""
 
-# classification: "string" (fixed value)
-classification = ""
+# # classification: "string" (fixed value)
+# classification = ""
 
-# isopen: boolean true or false
-isopen = False
+# # isopen: boolean true or false
+# isopen = False
 
-# accrual_periodicity: "string" (fixed value)
-freq = ""
+# # accrual_periodicity: "string" (fixed value)
+# freq = ""
 
- # temporal_from: "formatted date string"
-temp_from = ""
+#  # temporal_from: "formatted date string"
+# temp_from = ""
         
-# temporal_to: "formatted date string"
-temp_to = ""
+# # temporal_to: "formatted date string"
+# temp_to = ""
         
-# temporal_notes: {"en": "string"}
-temp_notes = ""
+# # temporal_notes: {"en": "string"}
+# temp_notes = ""
         
-# theme: ["fixed values"]
-topic = []
+# # theme: ["fixed values"]
+# topic = []
         
-# location: ["fixed values"]
-geo = []
+# # location: ["fixed values"]
+# geo = []
         
-# contact_point: "string" (fixed value)
-contact = "" # raw: string mandatory as contact_point
+# # contact_point: "string" (fixed value)
+# contact = "" # raw: string mandatory as contact_point
         
-# contact_point_email: "string" (email)
-email = "" # raw: string (email) mandatory as contact_point_email
+# # contact_point_email: "string" (email)
+# email = "" # raw: string (email) mandatory as contact_point_email
         
-# contact_point_phone: "string" (phone number)
-phone = "" # raw string (phone number)
+# # contact_point_phone: "string" (phone number)
+# phone = "" # raw string (phone number)
 
-# tags: ["string", "string"]
-tags = []
+# # tags: ["string", "string"]
+# tags = []
 
 """
 start the work of getting Knack data
@@ -289,18 +549,92 @@ else:
 assign knack data to variables/values for ckan parameters
 """
 
+# count to limit number of CREATE calls to CKAN for testing
+count = 0
 with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
     '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
     '\tcontact email\tcontact phone\tkeywords\n')
     for record in records:
+        count += 1
+        """
+        CKAN parameters
+        """
+         # title_translated-en: "string" ; mandatory
+        title_translated = ""
+        
+        # name: "slugged-title" ; required
+        name = ""
+        
+        # btype: ["fixed values"]
+        btype_list = []
+        
+        # notes_translated: {"en":"string"}
+        notes_translated = ""
+        
+        # provider: "string" (fixed value) ; mandatory
+        provider = ""
+        
+        # source: ["fixed values"]
+        sources = []
+        
+        # owner_org: "string" (fixed value); required 
+        owner_org = ""
+        
+        # classification: "string" (fixed value)
+        classification = ""
+        
+        # isopen: boolean true or false
+        isopen = ""
+        
+        # accrual_periodicity: "string" (fixed value)
+        freq = ""
+        
+         # temporal_from: "formatted date string"
+        temp_from = ""
+                
+        # temporal_to: "formatted date string"
+        temp_to = ""
+                
+        # temporal_notes: {"en": "string"}
+        temporal_notes = ""
+                
+        # theme: ["fixed values"]
+        topic = []
+                
+        # location: ["fixed values"]
+        geo = []
+                
+        # contact_point: "string" (fixed value)
+        contact = "" # raw: string mandatory as contact_point
+                
+        # contact_point_email: "string" (email)
+        email = "" # raw: string (email) mandatory as contact_point_email
+                
+        # contact_point_phone: "string" (phone number)
+        phone = "" # raw string (phone number)
+        
+        # tags: ["string", "string"]
+        tags = []
+
         title = record['field_5_raw'].strip()
+        print(title)
+        # param
         title_translated = title
+        
+        #param
         name = slugify(title)
         # print(name)
         dataset_types = list_values(record['field_152_raw'])
-        # call the types function above
         
+        # call the types function above
+        for dtype in dataset_types:
+            btype = btypes(dtype)
+            
+            #param
+            btype_list.append(btype)
+            
+        # print(btype_list)
         # description assigned but not written because of hidden characters which 
         # interrupt formatting for report
         # desc =  record['field_6_raw'].strip()
@@ -308,14 +642,38 @@ with open('knack_metadata.txt', 'w') as knack:
         # Instead include object reference.  Together with field (field_6), can easily query
         # for description to create notes parameter.
         desc = record['id']
-        provider = list_values(record['field_186_raw'])
+        
+        # param
+        notes_translated = record['field_6_raw'].strip()
+        
+        # param, Knack metadata
+        knack_provider = list_values(record['field_186_raw'])
+        # print(knack_provider)
+        provider = ckan_providers(knack_provider)
         # print(provider)
-        source = list_values(record['field_164_raw'])
+        
+        # skip sources until configuration uptodate
+        knack_sources = list_values(record['field_164_raw'])
+        
+        for source in knack_sources:
+            ckan_source = ckan_sources(source)
+            
+            # param, skip for now until configuration list is updated
+            sources.append(ckan_source)
+        # print(sources)    
         publisher = list_values(record['field_205_raw'])
+        owner_org = owner_orgs(publisher)
+        # print(owner_org)
         classification = list_values(record['field_155_raw'])
+        classification = classifications(classification)
+        # print(classification)
         open_value = record['field_308_raw']
         open_value =  value_none(open_value)
+        isopen = open_values(open_value)
+        # print(isopen)
         freq = list_values(record['field_139_raw'])
+        freq = frequencies(freq)
+        # print(freq)
         
         """
         dealing with date info
@@ -331,8 +689,12 @@ with open('knack_metadata.txt', 'w') as knack:
         
         temporal_notes = record['field_159_raw'].strip()
         temporal_notes = value_none(temporal_notes)
+        
+        # skip in CREATE call
         topics = list_values(record['field_146_raw'])
+        # skip in CREATE call
         location = list_values(record['field_136_raw'])
+        # skip in CREATE call
         keywords = list_values(record['field_321_raw'])
         
         """
@@ -371,9 +733,39 @@ with open('knack_metadata.txt', 'w') as knack:
         
         knack.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}\t{13}"
             "\t{14}\t{15}\t{16}\t{17}\n".format(
-            title, btype, desc, provider, source, publisher, classification, open_value,
+            title, dataset_types, desc, knack_provider, knack_sources, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1], keywords))
 
-
+        if count == 2:
+            contact_point = ckan_providers(contact_name)
+            if contact_info_list[0] == "none":
+                contact_point_email = 'opengov@cityofboston.gov'
+            else:
+                contact_point_email = contact_info_list[0]
+                
+            # default make all CREATE datasets private
+            # default license for all datasets is odc-pddl
+            payload = {"name": name, "title_translated-en": title_translated,
+                "notes_translated": {"en": notes_translated}, "provider": provider, 
+                "owner_org": owner_org, "classification": classification, "isopen": isopen,
+                "accrual_periodicity": freq, "contact_point": contact_point, "contact_point_email": contact_point_email,
+                "private": True, "license_id": "odc-pddl"}
+            
+            
+            data_string = urllib.quote(json.dumps(payload))
+            
+            request = urllib2.Request(
+                    'http://boston.ogopendata.com/api/3/action/package_create')
+            
+            # add Authorization header
+            request.add_header('Authorization', key)
+            
+            ## make request
+            try:
+                response = urllib2.urlopen(request, data_string)
+                print(response)
+            except urllib2.HTTPError as err:
+                print(err.code)
+            
 
