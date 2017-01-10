@@ -606,13 +606,13 @@ with open('knack_metadata.txt', 'w') as knack:
         geo = []
                 
         # contact_point: "string" (fixed value)
-        contact = "" # raw: string mandatory as contact_point
+        contact_point = "" # raw: string mandatory as contact_point
                 
         # contact_point_email: "string" (email)
-        email = "" # raw: string (email) mandatory as contact_point_email
+        contact_point_email = "" # raw: string (email) mandatory as contact_point_email
                 
         # contact_point_phone: "string" (phone number)
-        phone = "" # raw string (phone number)
+        contact_point_phone = "" # raw string (phone number)
         
         # tags: ["string", "string"]
         tags = []
@@ -737,13 +737,27 @@ with open('knack_metadata.txt', 'w') as knack:
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1], keywords))
 
-        if count == 2:
-            contact_point = ckan_providers(contact_name)
-            if contact_info_list[0] == "none":
-                contact_point_email = 'opengov@cityofboston.gov'
-            else:
-                contact_point_email = contact_info_list[0]
-                
+        report = open('package_report.txt', 'w')
+        report.write('super important, record of knack inventory as CKAN IDs\n\n')
+        report.write('package id\tcode\n')
+        report.write('%s\t' % name)
+        contact_point = ckan_providers(contact_name)
+        if contact_info_list[0] == "none": 
+            contact_point_email = 'opengov@cityofboston.gov'
+        else:
+            contact_point_email = contact_info_list[0]
+        if not contact_info_list[1] == "none":
+            contact_point_phone = contact_info_list[1]
+        if contact_point_phone:
+            # default make all CREATE datasets private
+            # default license for all datasets is odc-pddl
+            payload = {"name": name, "title_translated-en": title_translated,
+                "notes_translated": {"en": notes_translated}, "provider": provider, 
+                "owner_org": owner_org, "classification": classification, "isopen": isopen,
+                "accrual_periodicity": freq, "contact_point": contact_point, "contact_point_email": contact_point_email,
+                "contact_point_phone": contact_point_phone, "private": True, "license_id": "odc-pddl"}
+        
+        else:    
             # default make all CREATE datasets private
             # default license for all datasets is odc-pddl
             payload = {"name": name, "title_translated-en": title_translated,
@@ -751,21 +765,20 @@ with open('knack_metadata.txt', 'w') as knack:
                 "owner_org": owner_org, "classification": classification, "isopen": isopen,
                 "accrual_periodicity": freq, "contact_point": contact_point, "contact_point_email": contact_point_email,
                 "private": True, "license_id": "odc-pddl"}
+        
             
-            
-            data_string = urllib.quote(json.dumps(payload))
-            
-            request = urllib2.Request(
-                    'http://boston.ogopendata.com/api/3/action/package_create')
-            
-            # add Authorization header
-            request.add_header('Authorization', key)
-            
-            ## make request
-            try:
-                response = urllib2.urlopen(request, data_string)
-                print(response)
-            except urllib2.HTTPError as err:
-                print(err.code)
+        data_string = urllib.quote(json.dumps(payload))
+        request = urllib2.Request(
+                'http://boston.ogopendata.com/api/3/action/package_create')
+        # add Authorization header
+        request.add_header('Authorization', key)
+        ## make request
+        try:
+            response = urllib2.urlopen(request, data_string)
+            report.write('%s\n' % response.code)
+            print(response)
+        except urllib2.HTTPError as err:
+            report.write('%s\n' % err.code)
+            print(err)
             
 
