@@ -34,10 +34,6 @@ important functions, perhaps later to be used in
 building a library/module
 """
 
-def list_fixed_params(list_object):
-    list_params = []
-    return list_params
-
 def classifications(entity):
     
     return

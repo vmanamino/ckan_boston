@@ -23,6 +23,7 @@ include prep_data.py script in this and write directly to CKAN
 
 import json, os
 import pprint
+from slugify import slugify
 import sys
 import time
 import urllib2
@@ -157,6 +158,114 @@ def get_knack_data(page="1"):
     
     return r    
     
+"""
+functions to assign fixed values to parameters, later to be used in
+building a library/module
+"""
+
+def classifications(entity):
+    
+    return
+
+def frequencies(entity):
+    
+    return
+
+# aka owner_org
+def gov_entities(entity):
+    
+    
+    return
+
+def open_values(value):
+    
+    return
+
+def providers(entity):
+    
+    return
+
+def sources(entity):
+    
+    return
+
+def themes(entity):
+    
+    return
+
+# aka spatial
+
+def locations(entity):
+    
+    return
+
+def types(entity):
+    
+    return
+
+"""
+CKAN parameters
+"""
+ # title_translated-en: "string" ; mandatory
+title_translated = ""
+
+# name: "slugged-title" ; required
+name = ""
+
+# btype: ["fixed values"]
+btype = []
+
+# notes_translated: {"en":"string"}
+notes_translated = ""
+
+# provider: "string" (fixed value) ; mandatory
+provider = ""
+
+# source: ["fixed values"]
+source = []
+
+# owner_org: "string" (fixed value); required 
+owner_org = ""
+
+# classification: "string" (fixed value)
+classification = ""
+
+# isopen: boolean true or false
+isopen = False
+
+# accrual_periodicity: "string" (fixed value)
+freq = ""
+
+ # temporal_from: "formatted date string"
+temp_from = ""
+        
+# temporal_to: "formatted date string"
+temp_to = ""
+        
+# temporal_notes: {"en": "string"}
+temp_notes = ""
+        
+# theme: ["fixed values"]
+topic = []
+        
+# location: ["fixed values"]
+geo = []
+        
+# contact_point: "string" (fixed value)
+contact = "" # raw: string mandatory as contact_point
+        
+# contact_point_email: "string" (email)
+email = "" # raw: string (email) mandatory as contact_point_email
+        
+# contact_point_phone: "string" (phone number)
+phone = "" # raw string (phone number)
+
+# tags: ["string", "string"]
+tags = []
+
+"""
+start the work of getting Knack data
+"""
 response = get_knack_data()
 data = json.loads(response.read())
 pages = data['total_pages']
@@ -175,21 +284,22 @@ if pages > 1:
     
 else:
     records = data['records']
-    
 
-# with open('titles.txt', 'w') as titles:
-#     with open('descriptions.txt', 'w') as descriptions:
-#         for record in records:
-#             titles.write('%s\n' % record['field_5'].strip())
-#             descriptions.write('%s\n%s\n\n' % (record['field_5'].strip(), record['field_6'].strip()))
-        
+"""
+assign knack data to variables/values for ckan parameters
+"""
+
 with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
     '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
     '\tcontact email\tcontact phone\tkeywords\n')
     for record in records:
         title = record['field_5_raw'].strip()
-        btype = list_values(record['field_152_raw'])
+        title_translated = title
+        name = slugify(title)
+        # print(name)
+        dataset_types = list_values(record['field_152_raw'])
+        # call the types function above
         
         # description assigned but not written because of hidden characters which 
         # interrupt formatting for report
@@ -199,7 +309,7 @@ with open('knack_metadata.txt', 'w') as knack:
         # for description to create notes parameter.
         desc = record['id']
         provider = list_values(record['field_186_raw'])
-        print(provider)
+        # print(provider)
         source = list_values(record['field_164_raw'])
         publisher = list_values(record['field_205_raw'])
         classification = list_values(record['field_155_raw'])
@@ -242,20 +352,20 @@ with open('knack_metadata.txt', 'w') as knack:
         if record.has_key('field_147'):
             if (record['field_147']):
                 contact_name = record['field_147_raw'][0]['identifier'].strip()
-                print(contact_name)
+                # print(contact_name)
                 try:
                     contact_info_list = get_contact_info(record['field_147_raw'])
                     
                 except:
                     e = sys.exc_info()[0]
                     contact_info_list = ['none', 'none']
-                    print(e)
+                    # print(e)
             else:
-                print(record['field_5']+' has no contact')
+                # print(record['field_5']+' has no contact')
                 contact_name = 'none'
                 contact_info_list = ['none', 'none']
         else:
-            print(record['field_5'] + 'has no contact field key')
+            # print(record['field_5'] + 'has no contact field key')
             contact_name = 'none'
             contact_info_list = ['none', 'none']
         
