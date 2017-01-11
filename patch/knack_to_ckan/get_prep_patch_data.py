@@ -1,26 +1,15 @@
 # -*- coding: utf-8 -*- 
 
 """
-The aim is to create dataset metadata on the Boston Open Data Hub.
-This script will use metadata already created on a Knack database.
-To that end, I will use the Knack API to get that data.
-Transformation is necessary to create the Boston Open Data Hub metadata.
-Please see the mapping created for this task.
+Much of this was copied from ckan_boston/create/get_prep_data/get_prep_create_data.py
+Essentially, I am switching out the package_create endpoint with package_patch.
+I have to update the following (i.e. patch the datasets):
+source - done
+theme
+btype - done
+contact_name - done
+tags - done
 
-transformation requires the following steps:
-
-Get Data
-    Knack GET calls, and analysis of responses -- Done
-Prepare Data
-    Knack data laid out in columns -- Done
-    Mapping to CKAN and necessary transformations -- Current
-    CKAN metadata laid out in columns -- irrelevant
-    CKAN [metadata] formatted for creation
-Create Metadata
-    CREATE call to CKAN
-    reports of success, failure for each CREATE call
-    
-include prep_data.py script in this and write directly to CKAN
 """
 
 import json, os
@@ -245,12 +234,11 @@ def open_values(label):
     return value
 
 def ckan_providers(label):
-    print('as it enters')
-    print(label)
     value = ""
+    # in case not a string, but a list is passed
+    # only one provider in the Boston scheme
     if not type(label) == str:
         label = label[0]
-    print('after initial condition '+label)
     if label == "Administration & Finance":
         value = "finance"
     elif label == "Archives and Records Management":
@@ -383,53 +371,54 @@ def ckan_sources(label):
     value = ""
     if label == "Airport Statistics, Massport":
         value = "airport_statistics"
-    if label == "ArcGIS REST Services":
+    elif label == "ArcGIS REST Services":
         value = "arcgis_rest"
-    if label == "Boston EMS electronic patient care report system":
+    elif label == "Boston EMS electronic patient care report system":
         value = "ems_patient_care_report_system"
-    if label == "Boston Police Department Crime Statistics Feed":
+    elif label == "Boston Police Department Crime Statistics Feed":
         value = "police_crime_stats_feed"
-    if label == "Boston Public Library enterprise integrated library system (ILS)":
+    elif label == "Boston Public Library enterprise integrated library system (ILS)":
         value = "integrated_library_system"
-    if label == "Bostracks Enfocus":
+    elif label == "Bostracks Enfocus":
         value = "bostracks_enfocus"
-    if label == "BPDA (Boston Planning & Development Agency) contract compliance database":
+    elif label == "BPDA (Boston Planning & Development Agency) contract compliance database":
         value = "bpda_contract_compliance_db"
-    if label == "BRA pipeline database":
+    elif label == "BRA pipeline database":
         value = "bra_pipeline_db"
-    if label == "City Clerk documents and assigned docket numbers":
+    elif label == "City Clerk documents and assigned docket numbers":
         value ="city_clerk_documents"
-    if label == "City Constituent Relationship Management (CRM) System":
+    elif label == "City Constituent Relationship Management (CRM) System":
         value = "constituent_relationship_management_system"
-    if label == "City of Boston document management system":
+    elif label == "City of Boston document management system":
         value = "document_management_system"
-    if label == "City of Boston Enterprise Resource Planning System, Financials":
+    elif label == "City of Boston Enterprise Resource Planning System, Financials":
         value = "resource_planning_system_financials"
-    if label == "City of Boston Enterprise Resource Planning System, Human Capital Management (HCM)":
+    elif label == "City of Boston Enterprise Resource Planning System, Human Capital Management (HCM)":
         value = "resource_planning_system_human_capital"
-    if label == "City of Boston Voice over IP (VOIP) System":
+    elif label == "City of Boston Voice over IP (VOIP) System":
         value = "voip_system"
-    if label == "City wide Budgeting and Forecasting Application":
+    elif label == "City wide Budgeting and Forecasting Application":
         value = "budgeting_and_forecasting_app"
-    if label == "City wide Enterprise Energy Management System":
+    elif label == "City wide Enterprise Energy Management System":
         value = "energy_management_system"
-    if label == "City wide Enterprise Permitting and Licensing Software":
+    elif label == "City wide Enterprise Permitting and Licensing Software":
         value = "permitting_and_licensing_software"
-    if label == "Computer aided dispatch system (CAD)":
+    elif label == "Computer aided dispatch system (CAD)":
         value = "computer_aided_dispatch_system"
-    if label == "Department of Neighborhood Development Data Server":
+    elif label == "Department of Neighborhood Development Data Server":
         value = "neighborhood_development_server"
-    if label == "ENERGY STAR Portfolio Manager®":
+    elif label == "ENERGY STAR Portfolio Manager®":
         value = "energy_star_portfolio_manager"
-    if label == "Internal":
+    elif label == "Internal":
         value = "internal"
-    if label == "IPS Data Management System (DMS)":
+    elif label == "IPS Data Management System (DMS)":
         value = "ips_data_management_system"
-    if label == "Labor Market Information, The Official Website of the Executive Office of Labor and Workforce Development (EOLWD)":
+    elif label == "Labor Market Information, The Official Website of the Executive Office of Labor and Workforce Development (EOLWD)":
         value = "labor_market_info"
-    if label == "Massachusetts Artifact Tracking System (MATS)":
+    elif label == "Massachusetts Artifact Tracking System":
         value = "massachusetts_artifact_tracking_system"
-    
+    else:
+        value = "none"
     return value
 
 def themes(entity):
@@ -442,27 +431,28 @@ def locations(entity):
     
     return
 
-def btypes(entity):
+def btypes(label):
     value = ""
-    if entity == "Audio":
+    if label == "Audio":
         value = "audio"
-    if entity == "Image":
+    elif label == "Image":
         value = "image"
-    if entity == "Charts":
+    elif label == "Charts":
         value = "charts"
-    if entity == "Map":
+    elif label == "Map":
         value = "map"
-    if entity == "Calendar":
+    elif label == "Calendar":
         value = "calendar"
-    if entity == "Forms":
+    elif label == "Forms":
         value = "forms"
-    if entity == "External":
+    elif label == "External":
         value = "external"
-    if entity == "Files and documents":
+    elif label == "Files and documents":
         value = "files_and_documents"
-    if entity == "Tabular":
+    elif label == "Tabular":
         value = "tabular"
-    
+    else:
+        value = "none"
     return value
 
 # """
@@ -557,6 +547,9 @@ with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
     '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
     '\tcontact email\tcontact phone\tkeywords\n')
+    report = open('report_package_patch_tags.txt', 'w')
+    report.write("These datasets have keywords to be added\n\n")
+    report.write('id\tcode\tbtags\n')
     for record in records:
         count += 1
         """
@@ -616,7 +609,8 @@ with open('knack_metadata.txt', 'w') as knack:
         # contact_point_phone: "string" (phone number)
         contact_point_phone = "" # raw string (phone number)
         
-        # tags: ["string", "string"]
+        # tags: [{"name": "value"}, {"name": "value"}]
+        tag_dict = {}
         tags = []
 
         title = record['field_5_raw'].strip()
@@ -635,7 +629,7 @@ with open('knack_metadata.txt', 'w') as knack:
             
             #param
             btype_list.append(btype)
-            
+        # print(btype_list)    
         # print(btype_list)
         # description assigned but not written because of hidden characters which 
         # interrupt formatting for report
@@ -651,17 +645,23 @@ with open('knack_metadata.txt', 'w') as knack:
         # param, Knack metadata
         knack_provider = list_values(record['field_186_raw'])
         # print(knack_provider)
+        # knack_provider = knack_provider[0]
         provider = ckan_providers(knack_provider)
+        # print('this is the provider')
         # print(provider)
         
         # skip sources until configuration uptodate
         knack_sources = list_values(record['field_164_raw'])
-        
-        for source in knack_sources:
-            ckan_source = ckan_sources(source)
-            
-            # param, skip for now until configuration list is updated
-            sources.append(ckan_source)
+        # print('knack sources')
+        # print(knack_sources)
+        if not knack_sources == "none":
+            for source in knack_sources:
+                ckan_source = ckan_sources(source)
+                
+                # param, skip for now until configuration list is updated
+                sources.append(ckan_source)
+        else:
+            sources.append("none")
         # print(sources)    
         publisher = list_values(record['field_205_raw'])
         owner_org = owner_orgs(publisher)
@@ -698,7 +698,15 @@ with open('knack_metadata.txt', 'w') as knack:
         location = list_values(record['field_136_raw'])
         # skip in CREATE call
         keywords = list_values(record['field_321_raw'])
-        
+        # print(keywords)
+        # create dict to be element of a list, which is the value of tags param
+        # each tag must contain only alphanumeric, dash or 'space' or underscore, otherwise 409
+        if not keywords == "none":
+            for word in keywords:
+                tag_dict = {}
+                tag_dict['name'] = word
+                tags.append(tag_dict)
+        # print(tags)
         """
         Get contact info.  Was not able to get Knack filter to work.
         Display name for Gov Entity (Object 3) which is the parent of Contact is
@@ -738,46 +746,83 @@ with open('knack_metadata.txt', 'w') as knack:
             title, dataset_types, desc, knack_provider, knack_sources, publisher, classification, open_value,
             freq, temp_from, temp_to, temporal_notes, topics, location, contact_name, contact_info_list[0],
             contact_info_list[1], keywords))
-        print(contact_name)
+            
+        """
+        Here create Payload
+        """
+        # case 1, no source if not source[0] == "none":
+        # include source: list parameter
+        
         contact_point = ckan_providers(str(contact_name))
-        # print(contact_point)
-        if contact_info_list[0] == "none": 
-            contact_point_email = 'opengov@cityofboston.gov'
-        else:
-            contact_point_email = contact_info_list[0]
-        if not contact_info_list[1] == "none":
-            contact_point_phone = contact_info_list[1]
-        if contact_point_phone:
-            # default make all CREATE datasets private
-            # default license for all datasets is odc-pddl
-            payload = {"name": name, "title_translated-en": title_translated,
-                "notes_translated": {"en": notes_translated}, "provider": provider, 
-                "owner_org": owner_org, "classification": classification, "isopen": isopen,
-                "accrual_periodicity": freq, "contact_point": contact_point, "contact_point_email": contact_point_email,
-                "contact_point_phone": contact_point_phone, "private": True, "license_id": "odc-pddl"}
+        """
+        update contact_point and sources
+        """
+        # if not contact_point:
+        #     contact_point = "innovation"
+            
+        # if not sources[0] == "none":
         
-        else:    
-            # default make all CREATE datasets private
-            # default license for all datasets is odc-pddl
-            payload = {"name": name, "title_translated-en": title_translated,
-                "notes_translated": {"en": notes_translated}, "provider": provider, 
-                "owner_org": owner_org, "classification": classification, "isopen": isopen,
-                "accrual_periodicity": freq, "contact_point": contact_point, "contact_point_email": contact_point_email,
-                "private": True, "license_id": "odc-pddl"}
+        #     # name doubles as id for patching, updating
+        #     payload = {"id": name, "source": sources, "contact_point": contact_point}
+        # else:
+        #     payload = {"id": name, "contact_point": contact_point}
         
         """
-        Here make your CKAN CREATE call
+        update btype
         """
+        # if len(btype_list) and not btype_list[0] == "none":
+        #     payload = {"id": name, "btype": btype_list}
+            
+        #     """
+        #     Here make your CKAN CREATE call
+        #     """
+        #     data_string = urllib.quote(json.dumps(payload))
+        #     request = urllib2.Request(
+        #                 'http://boston.ogopendata.com/api/3/action/package_patch')
+        #     # add Authorization header
+        #     request.add_header('Authorization', key)
+        #     # make request
+        #     try:
+        #         response = urllib2.urlopen(request, data_string)
+        #         report.write('%s\t%s\t%s\n' % (name, response.code, btype_list))
+        #         print(response)
+        #     except urllib2.HTTPError as err:
+        #         report.write('%s\t%s\t%s\n' % (name, response.code, btype_list))
+        #         print(err)   
+        """
+        update tags
+        """
+        if len(tags):
+            print(tags)
+            payload = {"id": name, "tags":tags}
+            data_string = urllib.quote(json.dumps(payload))
+            request = urllib2.Request(
+                    'http://boston.ogopendata.com/api/3/action/package_patch')
+            # add Authorization header
+            request.add_header('Authorization', key)
+            try:
+                response = urllib2.urlopen(request, data_string)
+                report.write('%s\t%s\t%s\n' % (name, response.code, tags))
+                print(response)
+            except urllib2.HTTPError as err:
+                report.write('%s\t%s\t%s\n' % (name, err.code, tags))
+                print(err)    
+                
         # data_string = urllib.quote(json.dumps(payload))
         # request = urllib2.Request(
-        #         'http://boston.ogopendata.com/api/3/action/package_create')
+        #             'http://boston.ogopendata.com/api/3/action/package_patch')
         # # add Authorization header
         # request.add_header('Authorization', key)
-        # ## make request
+        # make request
         # try:
         #     response = urllib2.urlopen(request, data_string)
+        #     report.write('%s\t%s\t%s\n' % (name, response.code, contact_point))
         #     print(response)
         # except urllib2.HTTPError as err:
-        #     print(err)
+        #     report.write('%s\t%s\t%s\n' % (name, response.code, contact_point))
+        #     print(err)               
+        
+               
             
-
+            
+        
