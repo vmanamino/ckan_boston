@@ -754,6 +754,14 @@ with open('knack_metadata.txt', 'w') as knack:
         # include source: list parameter
         
         contact_point = ckan_providers(str(contact_name))
+        
+        """
+        update contact_point only
+        """
+        if not contact_point:
+            contact_point = "innovation"
+        payload = {"id": name, "contact_point": contact_point}
+        
         """
         update contact_point and sources
         """
@@ -792,21 +800,21 @@ with open('knack_metadata.txt', 'w') as knack:
         """
         update tags
         """
-        if len(tags):
-            print(tags)
-            payload = {"id": name, "tags":tags}
-            data_string = urllib.quote(json.dumps(payload))
-            request = urllib2.Request(
-                    'http://boston.ogopendata.com/api/3/action/package_patch')
-            # add Authorization header
-            request.add_header('Authorization', key)
-            try:
-                response = urllib2.urlopen(request, data_string)
-                report.write('%s\t%s\t%s\n' % (name, response.code, tags))
-                print(response)
-            except urllib2.HTTPError as err:
-                report.write('%s\t%s\t%s\n' % (name, err.code, tags))
-                print(err)    
+        # if len(tags):
+        #     print(tags)
+        #     payload = {"id": name, "tags":tags}
+        #     data_string = urllib.quote(json.dumps(payload))
+        #     request = urllib2.Request(
+        #             'http://boston.ogopendata.com/api/3/action/package_patch')
+        #     # add Authorization header
+        #     request.add_header('Authorization', key)
+        #     try:
+        #         response = urllib2.urlopen(request, data_string)
+        #         report.write('%s\t%s\t%s\n' % (name, response.code, tags))
+        #         print(response)
+        #     except urllib2.HTTPError as err:
+        #         report.write('%s\t%s\t%s\n' % (name, err.code, tags))
+        #         print(err)    
                 
         # data_string = urllib.quote(json.dumps(payload))
         # request = urllib2.Request(

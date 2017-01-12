@@ -25,6 +25,7 @@ Boston Open Data Hub datasets to be patched
 """
 
 # first send request for list of packages
+# package_list does not show packages in draft
 r = urllib2.urlopen('http://boston.ogopendata.com/api/3/action/package_list')
 
 # check if response is success, error will display in command line terminal
