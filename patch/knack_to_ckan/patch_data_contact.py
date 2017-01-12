@@ -7,24 +7,14 @@ import json, os
 import pprint
 from slugify import slugify
 import sys
-import urllib2
-import urllib
-import keys
-
-# this is where my keys are kept hidden from Github
+# this is where my keys are kept hidden from Github and this where my current modules are
 sys.path.append('/home/ubuntu/workspace/code/ckan_boston')
-reload(sys)
+from knack_api_library import get_knack_object
 
-# CKAN API key
-key = os.environ['CKAN_API_KEY'];
+obj_id = raw_input("Please enter object id for the Knack record: ")
 
-# Knack response header:
-# Content-Type application/json; charset=utf-8
-# I guess from this that character encoding is UTF-8
-sys.setdefaultencoding('utf-8')
+res = get_knack_object(obj_id)
 
-knack_app_id = os.environ['KNACK_APPLICATION_ID']
-    
-knack_api_key= os.environ['KNACK_API_KEY']
+data = json.loads(res.read())
 
-print(key)
+print(data['field_147_raw'])
