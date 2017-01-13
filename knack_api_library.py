@@ -66,9 +66,11 @@ def get_contact_object(obj):
     
     contact_info.insert(0, attributes[0]['identifier'])
     
+    contact_obj = Contact(contact_info[0], contact_info[1], contact_info[2])
+    
     # contact_info = json.loads(gov_entity_response.read())
     
-    return contact_info
+    return contact_obj
     
 def get_gov_entity_info(identifier):
     url = 'https://api.knack.com/v1/objects/object_3/records/'+identifier

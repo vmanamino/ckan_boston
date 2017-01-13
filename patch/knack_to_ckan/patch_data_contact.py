@@ -21,6 +21,6 @@ contact = data['field_147_raw']
 print(data['field_5_raw'])
 print('the contact for this data set is: ')
 contact_point = get_contact_object(contact)
-print(contact_point)
+print(contact_point.fn)
 
 
