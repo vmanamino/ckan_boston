@@ -22,7 +22,7 @@ knack_api_key= os.environ['KNACK_API_KEY']
 
 
 
-def get_knack_object(ident):
+def get_knack_dataset(ident):
    
     # will have to prep request to add ID and KEY as headers
     # had problems adding id as payload, should be tacked on at end
@@ -40,8 +40,8 @@ def get_knack_object(ident):
     
     return r    
 
-# provide contact object 'field_147_raw' from Knack object_2 record
-def get_contact_info(obj):
+# provide contact object 'field_147_raw' from Knack object_2 record, see get_knack_dataset
+def get_contact_object(obj):
     attributes = obj
     
     # contact is only one per dataset in our scheme, so can be confident in first place of all info
@@ -64,6 +64,44 @@ def get_contact_info(obj):
     
     contact_info = get_gov_entity_info(response['field_216_raw'][0]['id'])
     
+    contact_info.insert(0, attributes[0]['identifier'])
+    
     # contact_info = json.loads(gov_entity_response.read())
     
     return contact_info
+    
+def get_gov_entity_info(identifier):
+    url = 'https://api.knack.com/v1/objects/object_3/records/'+identifier
+    
+    request = urllib2.Request(url)
+                        
+    request.add_header('X-Knack-Application-Id', knack_app_id)
+    
+    request.add_header('X-Knack-REST-API-Key', knack_api_key)
+    
+    try:
+        r = urllib2.urlopen(request)
+    except urllib2.HTTPError as err:
+        r = err.code
+    
+    response = json.loads(r.read())
+    
+    info = []
+    if response['field_12_raw']['email']:
+        email = response['field_12_raw']['email']
+        info.append(email)
+    else:
+        info.append('none')
+    if response['field_13_raw']['formatted']:
+        phone = response['field_13_raw']['formatted']
+        info.append(phone)
+    else:
+        info.append('none')
+        
+    return info
+    
+class Contact:
+    def __init__(self, fn, email, phone):
+        self.fn = fn
+        self.email = email
+        self.phone = phone
