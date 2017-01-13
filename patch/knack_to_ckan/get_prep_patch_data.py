@@ -547,9 +547,10 @@ with open('knack_metadata.txt', 'w') as knack:
     knack.write('title\ttype\tdesc\tprovider\tsource\tpublisher\tclassification'
     '\topen\tupdate freq\tfrom\tto\tcoverage notes\ttopic\tgeo coverage\tcontact point'
     '\tcontact email\tcontact phone\tkeywords\n')
-    report = open('report_package_patch_tags.txt', 'w')
-    report.write("These datasets have keywords to be added\n\n")
-    report.write('id\tcode\tbtags\n')
+    report = open('report_package_patch_conditional.txt', 'w')
+    report.write('id\tcode\tcontact_point\tcontact_email\n')
+    report_patched = open('report_package_patched_contact_email.txt', 'w')
+    report_patched.write("dataset\tcode\n")
     for record in records:
         count += 1
         """
@@ -756,11 +757,49 @@ with open('knack_metadata.txt', 'w') as knack:
         contact_point = ckan_providers(str(contact_name))
         
         """
-        update contact_point only
+        update contact_point_email for knack inventory on CKAN
         """
-        if not contact_point:
-            contact_point = "innovation"
-        payload = {"id": name, "contact_point": contact_point}
+        
+        
+        # payload = {"id": name}
+        
+        # data_string = urllib.quote(json.dumps(payload))
+        # request = urllib2.Request(
+        #             'http://boston.ogopendata.com/api/3/action/package_show')
+        # # add Authorization header
+        # request.add_header('Authorization', key)
+        
+        # try:
+        #     response = urllib2.urlopen(request, data_string)
+        #     # report.write('%s\t%s\t%s\n' % (name, response.code, btype_list))
+        #     data = json.loads(response.read())
+        #     dataset = data['result']['name']
+        #     contact = data['result']['contact_point']
+        #     contact_email = data['result']['contact_point_email']
+        #     report.write("%s\t%s\t%s\t%s\n" % (dataset, response.code, contact, contact_email))
+            
+        #     if contact == "innovation" and not contact_email == "opengov@cityofboston.gov":
+        #         contact_email = "opengov@cityofboston.gov"
+        #         payload = {"id": dataset, "contact_point_email": contact_email}
+        #         data_string = urllib.quote(json.dumps(payload))
+        #         request = urllib2.Request(
+        #             'http://boston.ogopendata.com/api/3/action/package_patch')
+        #         # add Authorization header
+        #         request.add_header('Authorization', key)
+        #         try:
+        #             response = urllib2.urlopen(request, data_string)
+        #             report_patched.write("%s\t%s\n" % (dataset, response.code))
+        #         except urllib2.HTTPError as err:
+        #             report_patched.write("%s\t%s\n" % (dataset, err.code))
+            
+        # except urllib2.HTTPError as err:
+        #     report.write('%s\t%s\n' % (name, err.code))
+        #     print(err)   
+        
+            
+            # if contact_point == "innovation":
+            #     contact_point_email = "opengov@cityofboston.gov"
+            # payload = {"id": name, "contact_point_email": contact_point_email}
         
         """
         update contact_point and sources
