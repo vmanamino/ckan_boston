@@ -1,3 +1,7 @@
+"""
+See patch_data_contact.py file for testing of this modules
+"""
+
 import json, os
 import sys
 import urllib2
@@ -62,6 +66,7 @@ def get_contact_object(obj):
     
     response = json.loads(r.read())
     
+    # currently method call returns email and phone, in that order
     contact_info = get_gov_entity_info(response['field_216_raw'][0]['id'])
     
     contact_info.insert(0, attributes[0]['identifier'])
