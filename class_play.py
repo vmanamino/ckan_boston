@@ -5,13 +5,17 @@ import time
 class KnackObject:
     
     # get all objects in json for easy assignment
-    def get_in_json(self, ident):
+    # using static methods because not using or assigning anything to properties
+    # of the class
+    @staticmethod
+    def get_in_json(ident):
         res = get_knack_dataset(ident)
         return json.loads(res.read())
         
     # function to create multiple values in case relation of object to 
     # dataset is 'many'.
-    def list_values(self, list_obj):
+    @staticmethod
+    def list_values(list_obj):
         count = len(list_obj)
         value_list = []
         
@@ -28,10 +32,12 @@ class KnackObject:
         return return_obj
         
     # add function to separate list values with pipe
-    def list_values_display(self, list_obj):
+    @staticmethod
+    def list_values_display(list_obj):
         return '|'.join(list_obj)
         
-    def value_none(self, val):
+    @staticmethod
+    def value_none(val):
         value = ''
         if not val:
             value = 'none'
