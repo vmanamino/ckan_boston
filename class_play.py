@@ -50,7 +50,7 @@ class KnackDatasets:
 
 
 class KnackDataset(KnackObject):
-    
+    datasets = 0
     def __init__(self, ident):
         self.ident = ident
         self.json = self.get_in_json(ident)
@@ -69,6 +69,7 @@ class KnackDataset(KnackObject):
         self.topics = self.list_values(self.json['field_146_raw'])
         self.location = self.list_values(self.json['field_136_raw'])
         self.keywords = self.list_values(self.json['field_321_raw'])
+        KnackDataset.datasets += 1
         
     def get_date_str(self, time_obj):
         if time_obj:
@@ -80,6 +81,7 @@ class KnackDataset(KnackObject):
         
 dataset = KnackDataset('57b21c8e67d437161a265671')
 print(dataset.list_values_display(dataset.keywords))
+print(KnackDataset.datasets)
 # print(dataset.title)
 # print(dataset.types)
 # print('types separated')
