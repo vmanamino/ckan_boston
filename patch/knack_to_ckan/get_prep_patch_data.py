@@ -159,12 +159,12 @@ building a library/module
 
 def classifications(label):
     value = ""
-    if not label == "none" or label == "":
+    if not label == "none":
         label = label[0]
-    if label == "Exempt Record":
-        value = "exempt"
-    elif label == "Public Record":
-        value = "public"
+        if label == "Exempt Record":
+            value = "exempt"
+        elif label == "Public Record":
+            value = "public"
     else:
         value = "exempt"
     return value
